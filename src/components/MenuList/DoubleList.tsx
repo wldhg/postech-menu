@@ -5,6 +5,7 @@ import $ from './style.scss';
 
 interface MenuData {
   processed?: boolean
+  breakfast: string[]
   lunch: string[]
   dinner: string[]
 }
@@ -12,7 +13,7 @@ interface MenuData {
 interface Props {
   jigokData: MenuData
   ristData: MenuData
-  type: 'lunch' | 'dinner'
+  type: 'breakfast' | 'lunch' | 'dinner'
 }
 
 const DoubleList: React.SFC<Props> = (props: Props) => {

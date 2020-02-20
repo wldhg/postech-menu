@@ -7,13 +7,14 @@ import $ from './style.scss';
 
 interface MenuData {
   processed?: boolean
+  breakfast: string[]
   lunch: string[]
   dinner: string[]
 }
 
 interface Props {
   menu: MenuData
-  type: 'lunch' | 'dinner'
+  type: 'breakfast' | 'lunch' | 'dinner'
 }
 
 const SingleList: React.SFC<Props> = (props: Props) => {

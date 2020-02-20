@@ -9,20 +9,26 @@ import $ from './style.scss';
 
 interface MenuData {
   processed?: boolean
+  breakfast: string[]
   lunch: string[]
   dinner: string[]
 }
 
 const MenuList: React.SFC = () => {
   // States
-  const initialJigokData: MenuData = { lunch: [], dinner: [], processed: false };
+  const initialJigokData: MenuData = {
+    breakfast: [], lunch: [], dinner: [], processed: false,
+  };
   const [jigokData, setJigokData] = useState(initialJigokData);
-  const initialRistData: MenuData = { lunch: [], dinner: [], processed: false };
+  const initialRistData: MenuData = {
+    breakfast: [], lunch: [], dinner: [], processed: false,
+  };
   const [ristData, setRISTData] = useState(initialRistData);
 
   // Fetch Menu Data
   useEffect(() => {
     const APIFailed: MenuData = {
+      breakfast: ['API 요청이 잘못되었습니다.'],
       lunch: ['API 요청이 잘못되었습니다.'],
       dinner: ['API 요청이 잘못되었습니다.'],
       processed: true,
@@ -62,7 +68,7 @@ const MenuList: React.SFC = () => {
   }, []);
 
   const hour = moment().hour();
-  let showWhat = 'lunch'; // 'breakfast';
+  let showWhat = 'breakfast';
   if (hour >= 15) {
     showWhat = 'dinner';
   } else if (hour >= 11) {
@@ -74,13 +80,9 @@ const MenuList: React.SFC = () => {
       <div className={$.modal}>
         <h2 className={$.modalHead}>오늘의 교내 식단</h2>
         <Pivot className={$.pivot} defaultSelectedKey={showWhat}>
-          {
-          /*
           <PivotItem headerText="아침" itemKey="breakfast">
             <DoubleList jigokData={jigokData} ristData={ristData} type="breakfast" />
           </PivotItem>
-          */
-          }
           <PivotItem headerText="점심" itemKey="lunch">
             <DoubleList jigokData={jigokData} ristData={ristData} type="lunch" />
           </PivotItem>
