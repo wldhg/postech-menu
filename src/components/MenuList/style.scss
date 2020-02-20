@@ -1,0 +1,102 @@
+.container {
+  display: block;
+
+  @media screen and (orientation: landscape) and (min-width: 800px) {
+    margin: 100px auto;
+    width: max-content;
+  }
+
+  @media screen and (orientation: portrait) and (max-width: 799px) {
+    margin: 20px;
+  }
+}
+
+.modal {
+  margin: auto;
+  position: relative;
+  display: table-cell;
+  min-width: 240px;
+
+  .modalClose {
+    color: var(--monet);
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  .modalHead {
+    color: var(--monet);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  .pivot {
+    padding-right: 4px;
+  }
+}
+
+.menuContainer {
+  display: table;
+  padding: 10px;
+
+  & > div {
+    display: table-cell;
+  }
+
+  & > div:not(:last-of-type) {
+    padding-right: 20px;
+  }
+
+  h4 {
+    margin: 0 0 10px 0;
+  }
+
+  .menuList {
+    min-width: 100px;
+    line-height: 1.8;
+    display: table;
+
+    @media screen and (orientation: portrait) {
+      & {
+        display: flex;
+        flex-direction: column;
+
+        & > div[data-list]:not(:last-of-type) {
+          padding-right: 0;
+          padding-bottom: 15px;
+        }
+      }
+    }
+
+    & > div {
+      max-width: 140px;
+    }
+
+    & > div:not([data-list]) {
+      margin-bottom: 5px;
+    }
+
+    & > div[data-list] {
+      display: table-cell;
+
+      &:not(:last-of-type) {
+        padding-right: 15px;
+      }
+
+      h6 {
+        color: var(--monet);
+        font-size: .8rem;
+        margin: 0 0 5px 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+body {
+  --monet: #ffc206;
+  font-size: 11pt;
+  margin: 0;
+  overflow: hidden;
+
+  &, * {
+    font-family: "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+  }
+}
+
+::selection {
+  background-color: var(--monet);
+  color: white;
+}
+
+*:focus {
+  outline: none;
+}
