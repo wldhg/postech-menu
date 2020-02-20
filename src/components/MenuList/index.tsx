@@ -27,7 +27,7 @@ const MenuList: React.SFC = () => {
       dinner: ['API 요청이 잘못되었습니다.'],
       processed: true,
     };
-    fetch('/api/getJigokMenu', {
+    fetch('https://monet.haze.dog:8282/api/getJigokMenu', {
       method: 'GET',
     }).then((response) => {
       if (response.status === 200) {
@@ -43,7 +43,7 @@ const MenuList: React.SFC = () => {
         setJigokData(APIFailed);
       }
     }, () => { setJigokData(APIFailed); });
-    fetch('/api/getRISTMenu', {
+    fetch('https://monet.haze.dog:8282/api/getRISTMenu', {
       method: 'GET',
     }).then((response) => {
       if (response.status === 200) {
