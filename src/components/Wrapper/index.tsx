@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { initializeIcons } from '@uifabric/icons';
 
 import './style.scss';
@@ -35,12 +34,10 @@ const Wrapper: React.SFC<Props> = (props: Props) => {
   const {
     children, title, main, description, image, className,
   } = props;
-  const { pathname } = useRouter();
 
   // Determine meta information
   const realTitle = main ? '오늘의 메뉴' : `${title} - 오늘의 메뉴`;
   const metaDescription = description || '당신 꿀벌은 밥을 잘 먹습니까?';
-  const metaURL = `https://monet.waai.us:8282${pathname}`;
   const metaImage = image || '/images/buzz_fly.gif';
 
   // Render
@@ -54,10 +51,8 @@ const Wrapper: React.SFC<Props> = (props: Props) => {
         <meta name="description" content={metaDescription} />
         <meta name="viewport" content="width=320, user-scalable=no" />
         <meta property="og:title" content={realTitle} />
-        <meta property="og:url" content={metaURL} />
         <meta property="og:image" content={metaImage} />
         <meta property="og:description" content={metaDescription} />
-        <base href="https://monet.waai.us:8282/" />
         <title>{realTitle}</title>
 
         {/* Styles */}
