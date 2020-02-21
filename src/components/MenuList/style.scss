@@ -1,6 +1,6 @@
 .container {
   display: block;
-  margin: calc(1vh + 5%) auto 2vh;
+  margin: calc(1vh + 5% - 20px) auto calc(2vh - 20px);
   width: max-content;
 }
 
@@ -9,6 +9,7 @@
   position: relative;
   display: table-cell;
   min-width: 240px;
+  padding: 20px;
 
   .modalClose {
     color: var(--monet);
