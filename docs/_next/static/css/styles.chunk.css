@@ -14,14 +14,9 @@ body {
   outline: none; }
 
 .gqciH1Ktv {
-  display: block; }
-  @media screen and (orientation: landscape) and (min-width: 800px) {
-    .gqciH1Ktv {
-      margin: 100px auto;
-      width: max-content; } }
-  @media screen and (orientation: portrait) and (max-width: 799px) {
-    .gqciH1Ktv {
-      margin: 20px; } }
+  display: block;
+  margin: calc(1vh + 5%) auto 2vh;
+  width: max-content; }
 
 .TRlvFVGrf {
   margin: auto;

@@ -69,9 +69,9 @@ const MenuList: React.SFC = () => {
 
   const hour = moment().hour();
   let showWhat = 'breakfast';
-  if (hour >= 15) {
+  if (hour >= 14) {
     showWhat = 'dinner';
-  } else if (hour >= 11) {
+  } else if (hour >= 10) {
     showWhat = 'lunch';
   }
 

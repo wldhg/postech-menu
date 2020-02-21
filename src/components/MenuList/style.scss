@@ -1,14 +1,7 @@
 .container {
   display: block;
-
-  @media screen and (orientation: landscape) and (min-width: 800px) {
-    margin: 100px auto;
-    width: max-content;
-  }
-
-  @media screen and (orientation: portrait) and (max-width: 799px) {
-    margin: 20px;
-  }
+  margin: calc(1vh + 5%) auto 2vh;
+  width: max-content;
 }
 
 .modal {
