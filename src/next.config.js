@@ -6,4 +6,9 @@ module.exports = SassWrapper({
     importLoaders: true,
     localIdentName: '[sha512:hash:base62:9]',
   },
+  sassLoaderOptions: {
+    data: `
+      @import "misc/variables.scss";
+    `,
+  },
 });

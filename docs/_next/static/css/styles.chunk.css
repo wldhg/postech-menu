@@ -1,0 +1,94 @@
+html[data-theme="dark"] {
+  background-color: #1b1b1b; }
+  html[data-theme="dark"] main span, html[data-theme="dark"] main p, html[data-theme="dark"] main h4 {
+    color: #fefefe; }
+
+html[data-theme="light"] {
+  background-color: #fefefe; }
+  html[data-theme="light"] main span, html[data-theme="light"] main p, html[data-theme="light"] main h4 {
+    color: #1b1b1b; }
+
+html.fPriTC6Hf {
+  transition: background-color .4s ease-in-out, color .4s ease-in-out; }
+
+body {
+  font-size: 11pt;
+  margin: 0;
+  overflow: hidden; }
+  body, body * {
+    font-family: "Noto Sans CJK KR", "Noto Sans KR", sans-serif; }
+
+::selection {
+  background-color: #ffc206;
+  color: white; }
+
+*:focus {
+  outline: none; }
+
+.gqciH1Ktv {
+  display: block;
+  margin: calc(1vh + 5% - 20px) auto calc(2vh - 20px);
+  width: max-content; }
+
+main {
+  margin: auto;
+  position: relative;
+  display: table-cell;
+  min-width: 240px;
+  padding: 20px; }
+  main h1 {
+    color: #ffc206;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    font-size: 1.4rem;
+    display: inline-block; }
+  main .D7MhqtYKR {
+    padding-right: 4px; }
+
+._77Argp145 {
+  display: table;
+  padding: 10px; }
+  ._77Argp145 > div {
+    display: table-cell; }
+  ._77Argp145 > div:not(:last-of-type) {
+    padding-right: 20px; }
+  ._77Argp145 h4 {
+    margin: 0 0 10px 0; }
+  ._77Argp145 .mxdGwnVIT {
+    min-width: 100px;
+    line-height: 1.8;
+    display: table; }
+    @media screen and (orientation: portrait) {
+      ._77Argp145 .mxdGwnVIT {
+        display: flex;
+        flex-direction: column; }
+        ._77Argp145 .mxdGwnVIT > div[data-list]:not(:last-of-type) {
+          padding-right: 0;
+          padding-bottom: 15px; } }
+    ._77Argp145 .mxdGwnVIT > div {
+      max-width: 140px; }
+    ._77Argp145 .mxdGwnVIT > div:not([data-list]) {
+      margin-bottom: 5px; }
+    ._77Argp145 .mxdGwnVIT > div[data-list] {
+      display: table-cell; }
+      ._77Argp145 .mxdGwnVIT > div[data-list]:not(:last-of-type) {
+        padding-right: 15px; }
+      ._77Argp145 .mxdGwnVIT > div[data-list] h6 {
+        color: #ffc206;
+        font-size: .8rem;
+        margin: 0 0 5px 0; }
+      ._77Argp145 .mxdGwnVIT > div[data-list] p {
+        margin: 0; }
+
+footer {
+  padding: 20px;
+  font-size: 0.8rem;
+  color: gray;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px; }
+  footer p {
+    margin: 10px 0 0; }
+
+
+/*# sourceMappingURL=styles.chunk.css.map*/

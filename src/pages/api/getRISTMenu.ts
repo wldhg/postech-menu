@@ -35,6 +35,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
       if (!error && response && response.statusCode === 200) {
         const timeout = setTimeout(() => {
           O.end(JSON.stringify({
+            breakfast: ['API 처리 시간을 초과하였습니다.'],
             lunch: ['API 처리 시간을 초과하였습니다.'],
             dinner: ['API 처리 시간을 초과하였습니다.'],
           }));
@@ -43,6 +44,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {
             ristRet = JSON.stringify({
+              breakfast: ['식사가 없는 날입니다.'],
               lunch: ['식사가 없는 날입니다.'],
               dinner: ['식사가 없는 날입니다.'],
             });

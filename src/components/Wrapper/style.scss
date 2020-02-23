@@ -1,5 +1,28 @@
+html {
+  &[data-theme="dark"] {
+    background-color: #1b1b1b;
+    main {
+      span, p, h4 {
+        color: #fefefe;
+      }
+    }
+  }
+
+  &[data-theme="light"] {
+    background-color: #fefefe;
+    main {
+      span, p, h4 {
+        color: #1b1b1b;
+      }
+    }
+  }
+
+  &.loaded {
+    transition: background-color .4s ease-in-out, color .4s ease-in-out;
+  }
+}
+
 body {
-  --monet: #ffc206;
   font-size: 11pt;
   margin: 0;
   overflow: hidden;
@@ -10,7 +33,7 @@ body {
 }
 
 ::selection {
-  background-color: var(--monet);
+  background-color: $monet-color;
   color: white;
 }
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Pivot, PivotItem,
+  Pivot, PivotItem, ActionButton, Customizations,
 } from 'office-ui-fabric-react';
-import moment from 'moment';
 import DoubleList from './DoubleList';
+import { monetDark, monetLight } from '../Wrapper/theme';
 
 import $ from './style.scss';
 
@@ -24,6 +24,7 @@ const MenuList: React.SFC = () => {
     breakfast: [], lunch: [], dinner: [], processed: false,
   };
   const [ristData, setRISTData] = useState(initialRistData);
+  const [dispModeTogglerText, setDispModeTogglerText] = useState('밝기 모드 변경');
 
   // Fetch Menu Data
   useEffect(() => {
@@ -67,7 +68,8 @@ const MenuList: React.SFC = () => {
     }, () => { setRISTData(APIFailed); });
   }, []);
 
-  const hour = moment().hour();
+  // Set default pivot item by time
+  const hour = (new Date()).getHours();
   let showWhat = 'breakfast';
   if (hour >= 14) {
     showWhat = 'dinner';
@@ -75,10 +77,49 @@ const MenuList: React.SFC = () => {
     showWhat = 'lunch';
   }
 
+  // Set toggle mode change button
+  const setNightBoy = (data?: boolean) => {
+    if (typeof data !== 'boolean') {
+      document.cookie = 'NightBoy=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    } else {
+      document.cookie = `NightBoy=${data.toString()};expires=${
+        (new Date(Date.now() + 5184000)).toUTCString()
+      };`;
+    }
+  };
+  const toggleDispMode = () => {
+    if (document.documentElement.dataset?.theme === 'dark') {
+      Customizations.applySettings({ theme: monetLight });
+      document.documentElement.dataset.theme = 'light';
+      setDispModeTogglerText('어둡게 보기');
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setNightBoy(false);
+      } else {
+        setNightBoy();
+      }
+    } else {
+      Customizations.applySettings({ theme: monetDark });
+      document.documentElement.dataset.theme = 'dark';
+      setDispModeTogglerText('밝게 보기');
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setNightBoy();
+      } else {
+        setNightBoy(true);
+      }
+    }
+  };
+  useEffect(() => {
+    if (document.documentElement.dataset?.theme === 'dark') {
+      setDispModeTogglerText('밝게 보기');
+    } else {
+      setDispModeTogglerText('어둡게 보기');
+    }
+  }, []);
+
   return (
     <div className={$.container}>
-      <div className={$.modal}>
-        <h2 className={$.modalHead}>오늘의 교내 식단</h2>
+      <main>
+        <h1>오늘의 교내 식단</h1>
         <Pivot className={$.pivot} defaultSelectedKey={showWhat}>
           <PivotItem headerText="아침" itemKey="breakfast">
             <DoubleList jigokData={jigokData} ristData={ristData} type="breakfast" />
@@ -90,7 +131,18 @@ const MenuList: React.SFC = () => {
             <DoubleList jigokData={jigokData} ristData={ristData} type="dinner" />
           </PivotItem>
         </Pivot>
-      </div>
+      </main>
+      <footer>
+        <div>
+          <ActionButton disabled>API 문서</ActionButton>
+          <ActionButton onClick={toggleDispMode}>{dispModeTogglerText}</ActionButton>
+        </div>
+        <p>
+          데이터: 포스텍 복지회, 신세계푸드.
+          <br />
+          시스템: 안개견.
+        </p>
+      </footer>
     </div>
   );
 };

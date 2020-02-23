@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Shimmer,
-} from 'office-ui-fabric-react';
+import { Shimmer } from 'office-ui-fabric-react';
 
 import $ from './style.scss';
 

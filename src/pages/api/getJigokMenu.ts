@@ -32,6 +32,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
       if (!error && response && response.statusCode === 200) {
         const timeout = setTimeout(() => {
           O.end(JSON.stringify({
+            breakfast: ['API 처리 시간을 초과하였습니다.'],
             lunch: ['API 처리 시간을 초과하였습니다.'],
             dinner: ['API 처리 시간을 초과하였습니다.'],
           }));
