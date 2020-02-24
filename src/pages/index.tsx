@@ -1,10 +1,10 @@
 import React from 'react';
 import Wrapper from '../components/Wrapper';
-import MenuList from '../components/MenuList';
+import MenuMain from '../components/MenuMain';
 
 const Index: React.SFC = () => (
   <Wrapper main>
-    <MenuList />
+    <MenuMain />
   </Wrapper>
 );
 

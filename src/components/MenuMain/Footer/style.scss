@@ -1,0 +1,15 @@
+footer {
+  padding: 20px;
+  font-size: 0.8rem;
+
+  p {
+    margin: 10px 0 0;
+    color: gray !important;
+
+    &.version {
+      opacity: .5;
+      margin-top: 5px;
+      user-select: none;
+    }
+  }
+}

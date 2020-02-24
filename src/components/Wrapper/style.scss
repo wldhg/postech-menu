@@ -1,20 +1,12 @@
 html {
   &[data-theme="dark"] {
     background-color: #1b1b1b;
-    main {
-      span, p, h4 {
-        color: #fefefe;
-      }
-    }
+    color: #fefefe;
   }
 
   &[data-theme="light"] {
     background-color: #fefefe;
-    main {
-      span, p, h4 {
-        color: #1b1b1b;
-      }
-    }
+    color: #1b1b1b;
   }
 
   &.loaded {

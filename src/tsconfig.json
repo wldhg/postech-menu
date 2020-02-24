@@ -24,6 +24,6 @@
   "include": [
     "./components/**/*",
     "./pages/**/*",
-    "./scss.d.ts"
+    "loader.d.ts"
   ]
 }

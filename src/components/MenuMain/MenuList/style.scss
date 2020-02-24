@@ -1,0 +1,64 @@
+.menuContainer {
+  padding-right: 4px;
+
+  .menuBLD {
+    display: table;
+    padding: 10px;
+
+    & > div {
+      display: table-cell;
+    }
+
+    & > div:not(:last-of-type) {
+      padding-right: 20px;
+    }
+
+    h4 {
+      margin: 0 0 10px 0;
+    }
+
+    .menuList {
+      min-width: 100px;
+      line-height: 1.8;
+      display: table;
+
+      @media screen and (orientation: portrait) {
+        & {
+          display: flex;
+          flex-direction: column;
+
+          & > div[data-list]:not(:last-of-type) {
+            padding-right: 0;
+            padding-bottom: 15px;
+          }
+        }
+      }
+
+      & > div {
+        max-width: 140px;
+      }
+
+      & > div:not([data-list]) {
+        margin-bottom: 5px;
+      }
+
+      & > div[data-list] {
+        display: table-cell;
+
+        &:not(:last-of-type) {
+          padding-right: 15px;
+        }
+
+        h6 {
+          color: $monet-color;
+          font-size: .8rem;
+          margin: 0 0 5px 0;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
