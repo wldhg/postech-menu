@@ -140,7 +140,7 @@ const MenuList: React.SFC = () => {
         <p>
           데이터: 포스텍 복지회, 신세계푸드.
           <br />
-          시스템: 안개견.
+          시스템: 아지래견.
         </p>
       </footer>
     </div>
