@@ -1,9 +1,9 @@
 {
   "name": "postech-menu",
-  "version": "1.0.0",
-  "description": "POSTECH Restaurant Menu Viewer",
+  "version": "1.0.0-beta",
+  "description": "POSTECH Cafeteria Menu Viewer",
   "main": "src/",
-  "author": "Jio Gim <jio@wldh.org>",
+  "author": "Haze Dog <dev@haze.dog>",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
