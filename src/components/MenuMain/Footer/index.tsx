@@ -5,6 +5,7 @@ import {
 import BrightnessMode from './BrightnessMode';
 import CaptureMenu from './CaptureMenu';
 import DispLocale from './DispLocale';
+import CookieInfo from './CookieInfo';
 import useI18n from '../../I18n';
 
 import $ from './style.scss';
@@ -32,6 +33,9 @@ const Footer: React.SFC = () => {
         <DispLocale />
         {/* <ActionButton disabled>API</ActionButton> */}
       </div>
+      <div>
+        <CookieInfo />
+      </div>
       <p>
         <Text variant="smallPlus">{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
         <br />
@@ -42,7 +46,7 @@ const Footer: React.SFC = () => {
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">20200225.1</Text>
+        <Text variant="smallPlus">20200225.2</Text>
       </p>
     </footer>
   );

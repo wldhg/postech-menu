@@ -82,6 +82,7 @@ const CaptureMenu: React.SFC = () => {
           type: DialogType.normal,
           title: t('캡처 실패'),
           subText: t('메뉴 DOM을 얻을 수 없었습니다. 잠시 후 다시 시도해보세요.'),
+          showCloseButton: false,
         }}
       >
         <DialogFooter>
