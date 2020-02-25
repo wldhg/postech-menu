@@ -90,7 +90,7 @@ footer {
     margin-top: 2px;
     display: none; }
     footer .BGWyPO.ERXCFE {
-      display: block; }
+      display: flex; }
   footer p {
     margin: 10px 0 0;
     color: gray !important; }
