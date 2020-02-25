@@ -1,21 +1,14 @@
 .container {
-  display: block;
   margin: calc(1vh + 5% - 20px) auto calc(2vh - 20px);
-  width: max-content;
+  width: 600px;
+
+  @include onMobile {
+    width: 390px;
+  }
 
   main {
-    margin: auto;
     position: relative;
-    display: table-cell;
     min-width: 240px;
     padding: 20px;
-
-    h1 {
-      color: $monet-color;
-      margin: 0 0 10px 0;
-      font-weight: 700;
-      font-size: 1.4rem;
-      display: inline-block;
-    }
   }
 }

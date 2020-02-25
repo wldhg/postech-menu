@@ -86,7 +86,7 @@ const WrapperContent: React.SFC<Props> = (props: Props) => {
         <meta name="theme-color" content="#ffc206" />
         <meta name="robots" content="noimageindex" />
         <meta name="description" content={metaDescription} />
-        <meta name="viewport" content="width=360, user-scalable=no" />
+        <meta name="viewport" content="width=390, user-scalable=no" />
         <meta property="og:title" content={realTitle} />
         <meta property="og:image" content={metaImage} />
         <meta property="og:description" content={metaDescription} />

@@ -1,9 +1,15 @@
 import React, {
   createContext, useReducer, useContext, Dispatch,
 } from 'react';
-import { createTheme, Customizations } from 'office-ui-fabric-react';
+import { createTheme, Customizations, IRawStyle } from 'office-ui-fabric-react';
+
+const notoFont: IRawStyle = {
+  fontFamily: '"Noto Sans CJK KR", "Noto Sans KR", sans-serif',
+  fontWeight: 'normal',
+};
 
 const monetLight = createTheme({
+  defaultFontStyle: notoFont,
   palette: {
     themePrimary: '#ffc206',
     themeLighterAlt: '#fffdf5',
@@ -31,6 +37,7 @@ const monetLight = createTheme({
 });
 
 const monetDark = createTheme({
+  defaultFontStyle: notoFont,
   palette: {
     themePrimary: '#ffc206',
     themeLighterAlt: '#fffdf5',

@@ -4,7 +4,7 @@ module.exports = SassWrapper({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: true,
-    localIdentName: '[sha512:hash:base62:9]',
+    localIdentName: '[sha512:hash:base62:6]',
   },
   sassLoaderOptions: {
     data: `

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionButton } from 'office-ui-fabric-react';
+import { ActionButton, Text } from 'office-ui-fabric-react';
 import useTheme from '../../Theme';
 import useI18n from '../../I18n';
 import useAPI from '../../API';
@@ -99,11 +99,17 @@ const Footer: React.SFC = () => {
         {/* <ActionButton disabled>API</ActionButton> */}
       </div>
       <p>
-        {t('데이터: 포스텍 복지회, 신세계푸드.')}
+        <Text variant="smallPlus">{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
         <br />
-        {t('시스템: 아지래견.')}
+        <Text variant="smallPlus">
+          {t('시스템: ')}
+          <a href="mailto:dev@haze.dog">{t('아지래견')}</a>
+          .
+        </Text>
       </p>
-      <p className={$.version}>20200225.1</p>
+      <p className={$.version}>
+        <Text variant="smallPlus">20200225.1</Text>
+      </p>
     </footer>
   );
 };

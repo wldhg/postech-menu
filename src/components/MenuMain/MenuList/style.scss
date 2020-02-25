@@ -1,6 +1,4 @@
 .menuContainer {
-  padding-right: 4px;
-
   .menuBLD {
     display: table;
     padding: 10px;
@@ -13,29 +11,29 @@
       padding-right: 20px;
     }
 
-    h4 {
-      margin: 0 0 10px 0;
+    h3 {
+      margin: 10px 0;
+
+      .title {
+        font-weight: 700;
+      }
     }
 
     .menuList {
       min-width: 100px;
-      line-height: 1.8;
+      line-height: 1.2;
       display: table;
 
-      @media screen and (orientation: portrait) {
+      @include onMobile {
         & {
           display: flex;
           flex-direction: column;
 
           & > div[data-list]:not(:last-of-type) {
-            padding-right: 0;
+            padding-right: 0 !important;
             padding-bottom: 15px;
           }
         }
-      }
-
-      & > div {
-        max-width: 140px;
       }
 
       & > div:not([data-list]) {
@@ -44,19 +42,31 @@
 
       & > div[data-list] {
         display: table-cell;
+        max-width: 185px;
+
+        @include onMobile {
+          max-width: 165px;
+        }
 
         &:not(:last-of-type) {
           padding-right: 15px;
         }
 
-        h6 {
-          color: $monet-color;
-          font-size: .8rem;
+        h4 {
           margin: 0 0 5px 0;
+
+          .subTitle {
+            font-weight: 700;
+            color: $monet;
+          }
         }
 
         p {
-          margin: 0;
+          margin: .8em 0;
+
+          &:first-child {
+            margin-top: 0;
+          }
         }
       }
     }

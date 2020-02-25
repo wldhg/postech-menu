@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'office-ui-fabric-react';
 import MealByPlace from './MealByPlace';
 import useI18n from '../../I18n';
 import { MealType } from '../../API';
@@ -17,11 +18,19 @@ const ListByMeal: React.SFC<Props> = (props: Props) => {
   return (
     <div className={$.menuBLD}>
       <div>
-        <h4>{t('학생 식당')}</h4>
+        <h3>
+          <Text variant="mediumPlus" className={$.title}>
+            {t('학생 식당')}
+          </Text>
+        </h3>
         <MealByPlace place="jigok" type={type} />
       </div>
       <div>
-        <h4>{t('RIST 식당')}</h4>
+        <h3>
+          <Text variant="mediumPlus" className={$.title}>
+            {t('RIST 식당')}
+          </Text>
+        </h3>
         <MealByPlace place="rist" type={type} />
       </div>
     </div>

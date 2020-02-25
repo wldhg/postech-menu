@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shimmer } from 'office-ui-fabric-react';
+import { Shimmer, Text } from 'office-ui-fabric-react';
 import { MealType, MealPlaces, useAPI } from '../../API';
 import useI18n from '../../I18n';
 
@@ -23,7 +23,11 @@ const MealByPlace: React.SFC<Props> = (props: Props) => {
       menuLists = [
         <div data-list key={`${place}-${type}-${Math.random()}`}>
           {
-            menu.map((m) => <p key={`${place}-${type}-i${Math.random()}`}>{m}</p>)
+            menu.map((m) => (
+              <p key={`${place}-${type}-i${Math.random()}`}>
+                <Text variant="medium">{m}</Text>
+              </p>
+            ))
           }
         </div>,
       ];
@@ -33,10 +37,15 @@ const MealByPlace: React.SFC<Props> = (props: Props) => {
       for (let idx = 0; idx < menuTitles.length; idx += 1) {
         menuLists.push(
           <div data-list key={`${place}-${type}-${Math.random()}`}>
-            <h6>{menuTitles[idx]}</h6>
+            <h4>
+              <Text variant="medium" className={$.subTitle}>{menuTitles[idx]}</Text>
+            </h4>
             {
-              menu[menuTitles[idx]]
-                .map((m) => <p key={`${place}-${type}-i${Math.random()}`}>{m}</p>)
+              menu[menuTitles[idx]].map((m) => (
+                <p key={`${place}-${type}-i${Math.random()}`}>
+                  <Text variant="medium">{m}</Text>
+                </p>
+              ))
             }
           </div>,
         );

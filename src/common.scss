@@ -1,1 +1,11 @@
-$monet-color: #ffc206;
+// Look Also: ./components/Theme.tsx
+
+$monet: #ffc206;
+$white: #fefefe;
+$black: #1b1b1b;
+
+@mixin onMobile {
+  @media screen and (orientation: portrait) and (max-width: 440px) {
+    @content;
+  }
+}
