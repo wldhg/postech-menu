@@ -1,16 +1,24 @@
 html {
   &[data-theme="dark"] {
-    --bg-color: $black;
-    --fg-color: $white;
+    --bg-color: #{$black};
+    --fg-color: #{$white};
     background-color: $black;
     color: $white;
+
+    i {
+      color: $white !important;
+    }
   }
 
   &[data-theme="light"] {
-    --bg-color: $white;
-    --fg-color: $black;
+    --bg-color: #{$white};
+    --fg-color: #{$black};
     background-color: $white;
     color: $black;
+
+    i {
+      color: $black !important;
+    }
   }
 
   &.loaded {

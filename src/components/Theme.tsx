@@ -2,6 +2,9 @@ import React, {
   createContext, useReducer, useContext, Dispatch,
 } from 'react';
 import { createTheme, Customizations, IRawStyle } from 'office-ui-fabric-react';
+import { initializeIcons } from '@uifabric/icons';
+
+initializeIcons(undefined, { disableWarnings: true });
 
 const notoFont: IRawStyle = {
   fontFamily: '"Noto Sans CJK KR", "Noto Sans KR", sans-serif',

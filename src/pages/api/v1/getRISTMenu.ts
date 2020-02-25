@@ -14,6 +14,7 @@ const ristMenu = {
   dinner: {},
 };
 
+let ristParsing = false;
 let ristDate = '00000000';
 let ristRet = '';
 
@@ -21,7 +22,20 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   O.setHeader('Content-Type', 'application/json; charset=utf-8');
   if (ristDate === moment().format('YYYYMMDD')) {
     O.end(ristRet);
+  } else if (ristParsing) {
+    let timeouted = false;
+    setTimeout(() => {
+      timeouted = true;
+    }, 1500);
+    const checkInterval = setInterval(() => {
+      if (Object.keys(ristMenu.dinner).length > 0) {
+        O.end(ristRet);
+      } else if (timeouted) {
+        clearInterval(checkInterval);
+      }
+    }, 300);
   } else {
+    ristParsing = true;
     request.post({
       url: 'https://ssgfoodingplus.com/fmn101.do?goTo=todayMenuJson',
       form: {
@@ -34,6 +48,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     }, (error, response, raw) => {
       if (!error && response && response.statusCode === 200) {
         const timeout = setTimeout(() => {
+          ristParsing = false;
           O.end(JSON.stringify({
             breakfast: ['API 처리 시간을 초과하였습니다.'],
             lunch: ['API 처리 시간을 초과하였습니다.'],
@@ -49,11 +64,13 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
               dinner: ['식사가 없는 날입니다.'],
             });
             ristDate = moment().format('YYYYMMDD');
+            ristParsing = false;
             O.end(ristRet);
           } else {
             ristMenu.lunch = {};
             ristMenu.dinner = {};
-            data.forEach((meal, idx) => {
+            for (let idx = 0; idx < data.length; idx += 1) {
+              const meal = data[idx];
               if (meal.meal_type_nm === '조식') {
                 if (ristMenu.breakfast[meal.dinner_type_nm]) {
                   ristMenu.breakfast[meal.dinner_type_nm].push(meal.if_menu_nm);
@@ -96,15 +113,18 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   dinner: ristDinner.length > 0 ? ristDinner : ['식사 정보가 없습니다.'],
                 });
                 ristDate = moment().format('YYYYMMDD');
+                ristParsing = false;
                 O.end(ristRet);
               }
-            });
+            }
           }
         } catch (e) {
           clearTimeout(timeout);
+          ristParsing = false;
           O.end(JSON.stringify(ristFailed));
         }
       } else {
+        ristParsing = false;
         O.end(JSON.stringify(ristFailed));
       }
     });

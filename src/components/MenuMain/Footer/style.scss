@@ -21,7 +21,7 @@ footer {
       text-decoration: none;
 
       &:focus, &:hover {
-        color: #fefefe;
+        color: var(--fg-color);
       }
     }
 

@@ -168,7 +168,7 @@ const parallelizeMenu = (menu: string[], locale: I18nLocale): MealMenu => {
       let cacheKey = null;
       for (let idx = 0; idx < menu.length; idx += 1) {
         const item = menu[idx];
-        if (item.indexOf('== ') === 0) {
+        if (item && item.indexOf('== ') === 0) {
           const key = item.substring(3);
           cache[key] = [];
           cacheKey = key;
