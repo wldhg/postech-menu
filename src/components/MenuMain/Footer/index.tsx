@@ -20,6 +20,16 @@ const Footer: React.SFC = () => {
     window.location.href = 'http://polivery.ml/?search';
   };
 
+  /* Error Report */
+  const moveErrorReport = () => {
+    window.location.href = 'mailto:menu-error@haze.dog';
+  };
+
+  /* GitHub */
+  const moveGitHub = () => {
+    window.location.href = 'https://github.com/wldh-g/postech-menu';
+  };
+
   /* Render */
   return (
     <footer>
@@ -27,14 +37,16 @@ const Footer: React.SFC = () => {
         <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
           {t('배달 음식')}
         </ActionButton>
-        {/* <ActionButton disabled>교직원 식당 보기</ActionButton> */}
         <CaptureMenu />
         <BrightnessMode />
-        <DispLocale />
-        {/* <ActionButton disabled>API</ActionButton> */}
       </div>
       <div>
+        {/* <ActionButton disabled>API</ActionButton> */}
+        <ActionButton onClick={moveGitHub}>GitHub</ActionButton>
+        <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
         <CookieInfo />
+        {/* <ActionButton disabled>식당 선택</ActionButton> */}
+        <DispLocale />
       </div>
       <p>
         <Text variant="smallPlus">{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
