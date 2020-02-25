@@ -65,17 +65,25 @@ const monetDark = createTheme({
 });
 
 type ThemeName = 'dark' | 'light';
-interface ThemeStruct { theme: ThemeName };
+interface ThemeStruct { theme: ThemeName, locked: boolean };
 
-const initialThemeContext: ThemeStruct = { theme: 'light' };
+const initialThemeContext: ThemeStruct = { theme: 'light', locked: false };
 const ThemeContext = createContext<ThemeStruct>(initialThemeContext);
 
-type ThemeAction = { type: 'SET_THEME'; theme: ThemeName; };
+type ThemeAction =
+  { type: 'SET_THEME'; theme: ThemeName; }
+  | { type: 'SET_LOCK_STATE'; locked: boolean; };
 const themeReducer = (state: ThemeStruct, action: ThemeAction): ThemeStruct => {
   switch (action.type) {
     case 'SET_THEME':
       return {
+        ...state,
         theme: action.theme,
+      };
+    case 'SET_LOCK_STATE':
+      return {
+        ...state,
+        locked: action.locked,
       };
     default:
       return state;
@@ -103,27 +111,50 @@ export const useTheme = () => {
 
   // Theme Setter
   const setTheme = (theme: ThemeName): void => {
-    if (theme === 'dark') {
-      if (document) {
-        document.documentElement.dataset.theme = 'dark';
+    if (!state.locked) {
+      if (theme === 'dark') {
+        if (document) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+        Customizations.applySettings({ theme: monetDark });
+      } else {
+        if (document) {
+          document.documentElement.dataset.theme = 'light';
+        }
+        Customizations.applySettings({ theme: monetLight });
       }
-      Customizations.applySettings({ theme: monetDark });
-    } else {
-      if (document) {
-        document.documentElement.dataset.theme = 'light';
-      }
-      Customizations.applySettings({ theme: monetLight });
+      dispatch({
+        type: 'SET_THEME',
+        theme,
+      });
     }
-    dispatch({
-      type: 'SET_THEME',
-      theme,
-    });
   };
 
   // Theme Getter
   const getTheme = (): ThemeName => state.theme;
 
-  return { getTheme, setTheme };
+  // Lock Getter
+  const isThemeLocked = (): boolean => state.locked;
+
+  // Locker
+  const lockTheme = (): void => {
+    dispatch({
+      type: 'SET_LOCK_STATE',
+      locked: true,
+    });
+  };
+
+  // Unlocker
+  const unlockTheme = (): void => {
+    dispatch({
+      type: 'SET_LOCK_STATE',
+      locked: false,
+    });
+  };
+
+  return {
+    getTheme, setTheme, lockTheme, unlockTheme, isThemeLocked,
+  };
 };
 
 export default useTheme;

@@ -10,5 +10,8 @@
     position: relative;
     min-width: 240px;
     padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    display: table-cell;
   }
 }

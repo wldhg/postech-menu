@@ -1,22 +1,29 @@
 html {
   &[data-theme="dark"] {
+    --bg-color: $black;
+    --fg-color: $white;
     background-color: $black;
     color: $white;
   }
 
   &[data-theme="light"] {
+    --bg-color: $white;
+    --fg-color: $black;
     background-color: $white;
     color: $black;
   }
 
   &.loaded {
-    transition: background-color .4s ease-in-out, color .4s ease-in-out;
+    &, main {
+      transition: background-color .4s ease-in-out, color .4s ease-in-out;
+    }
   }
 }
 
 body {
   font-size: 11pt;
   margin: 0;
+  overflow-x: hidden;
 }
 
 ::selection {

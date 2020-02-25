@@ -1,17 +1,22 @@
 html[data-theme="dark"] {
+  --bg-color: $black;
+  --fg-color: $white;
   background-color: #1b1b1b;
   color: #fefefe; }
 
 html[data-theme="light"] {
+  --bg-color: $white;
+  --fg-color: $black;
   background-color: #fefefe;
   color: #1b1b1b; }
 
-html.fPriTC {
+html.fPriTC, html.fPriTC main {
   transition: background-color .4s ease-in-out, color .4s ease-in-out; }
 
 body {
   font-size: 11pt;
-  margin: 0; }
+  margin: 0;
+  overflow-x: hidden; }
 
 ::selection {
   background-color: #ffc206;
@@ -26,51 +31,59 @@ h1 {
     color: #ffc206;
     font-weight: 700; }
 
-.uuRsHW .HXwtdU {
-  display: table;
-  padding: 10px; }
-  .uuRsHW .HXwtdU > div {
-    display: table-cell; }
-  .uuRsHW .HXwtdU > div:not(:last-of-type) {
-    padding-right: 20px; }
-  .uuRsHW .HXwtdU h3 {
-    margin: 10px 0; }
-    .uuRsHW .HXwtdU h3 .JnamcD {
-      font-weight: 700; }
-  .uuRsHW .HXwtdU .AeZacd {
-    min-width: 100px;
-    line-height: 1.2;
-    display: table; }
-    @media screen and (orientation: portrait) and (max-width: 440px) {
-      .uuRsHW .HXwtdU .AeZacd {
-        display: flex;
-        flex-direction: column; }
-        .uuRsHW .HXwtdU .AeZacd > div[data-list]:not(:last-of-type) {
-          padding-right: 0 !important;
-          padding-bottom: 15px; } }
-    .uuRsHW .HXwtdU .AeZacd > div:not([data-list]) {
-      margin-bottom: 5px; }
-    .uuRsHW .HXwtdU .AeZacd > div[data-list] {
-      display: table-cell;
-      max-width: 185px; }
+.uuRsHW {
+  padding-right: 4px; }
+  .uuRsHW .HXwtdU {
+    display: table;
+    padding: 10px; }
+    .uuRsHW .HXwtdU > div {
+      display: table-cell; }
+    .uuRsHW .HXwtdU > div:not(:last-of-type) {
+      padding-right: 20px; }
+    .uuRsHW .HXwtdU h3 {
+      margin: 10px 0; }
+      .uuRsHW .HXwtdU h3 .JnamcD {
+        font-weight: 700; }
+    .uuRsHW .HXwtdU .AeZacd {
+      min-width: 100px;
+      line-height: 1.2;
+      display: table; }
       @media screen and (orientation: portrait) and (max-width: 440px) {
-        .uuRsHW .HXwtdU .AeZacd > div[data-list] {
-          max-width: 165px; } }
-      .uuRsHW .HXwtdU .AeZacd > div[data-list]:not(:last-of-type) {
-        padding-right: 15px; }
-      .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 {
-        margin: 0 0 5px 0; }
-        .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .zuDV1X {
-          font-weight: 700;
-          color: #ffc206; }
-      .uuRsHW .HXwtdU .AeZacd > div[data-list] p {
-        margin: .8em 0; }
-        .uuRsHW .HXwtdU .AeZacd > div[data-list] p:first-child {
-          margin-top: 0; }
+        .uuRsHW .HXwtdU .AeZacd {
+          display: flex;
+          flex-direction: column; }
+          .uuRsHW .HXwtdU .AeZacd > div[data-list]:not(:last-of-type) {
+            padding-right: 0 !important;
+            padding-bottom: 15px; } }
+      .uuRsHW .HXwtdU .AeZacd > div:not([data-list]) {
+        margin-bottom: 5px; }
+      .uuRsHW .HXwtdU .AeZacd > div[data-list] {
+        display: table-cell;
+        max-width: 185px; }
+        @media screen and (orientation: portrait) and (max-width: 440px) {
+          .uuRsHW .HXwtdU .AeZacd > div[data-list] {
+            max-width: 165px; } }
+        .uuRsHW .HXwtdU .AeZacd > div[data-list]:not(:last-of-type) {
+          padding-right: 15px; }
+        .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 {
+          margin: 0 0 5px 0; }
+          .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .zuDV1X {
+            font-weight: 700;
+            color: #ffc206; }
+        .uuRsHW .HXwtdU .AeZacd > div[data-list] p {
+          margin: .8em 0; }
+          .uuRsHW .HXwtdU .AeZacd > div[data-list] p:first-child {
+            margin-top: 0; }
 
 footer {
   padding: 20px;
   font-size: 0.8rem; }
+  footer .BGWyPO {
+    margin-left: 3px;
+    margin-top: 2px;
+    display: none; }
+    footer .BGWyPO.ERXCFE {
+      display: block; }
   footer p {
     margin: 10px 0 0;
     color: gray !important; }
@@ -93,7 +106,10 @@ footer {
   .OUdguY main {
     position: relative;
     min-width: 240px;
-    padding: 20px; }
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    display: table-cell; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/
