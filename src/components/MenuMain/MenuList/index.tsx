@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Pivot, PivotItem, MessageBar, MessageBarType,
-} from 'office-ui-fabric-react';
+import React, { useEffect } from 'react';
+import { Pivot, PivotItem } from 'office-ui-fabric-react';
 import ListByMeal from './ListByMeal';
 import useAPI from '../../API';
 import useI18n from '../../I18n';
@@ -14,7 +12,6 @@ const MenuList: React.SFC = () => {
   // States
   const { setAPILocale, fetchMenu } = useAPI();
   const { t, getLocale } = useI18n(D);
-  const [showEngNoti, setShowEngNoti] = useState(true);
 
   // Fetch Menu Data
   useEffect(() => {
@@ -31,37 +28,18 @@ const MenuList: React.SFC = () => {
     showWhat = 'lunch';
   }
 
-  // English Notification Closer
-  const closeEngNoti = () => {
-    setShowEngNoti(false);
-  };
-
   return (
-    <>
-      {
-        getLocale() === 'en' && showEngNoti && (
-          <MessageBar
-            messageBarType={MessageBarType.warning}
-            dismissButtonAriaLabel="Close"
-            onDismiss={closeEngNoti}
-            className={$.engNoti}
-          >
-            English is not supported on RIST Cafteria menu for now.
-          </MessageBar>
-        )
-      }
-      <Pivot className={$.menuContainer} defaultSelectedKey={showWhat}>
-        <PivotItem headerText={t('아침')} itemKey="breakfast">
-          <ListByMeal type="breakfast" />
-        </PivotItem>
-        <PivotItem headerText={t('점심')} itemKey="lunch">
-          <ListByMeal type="lunch" />
-        </PivotItem>
-        <PivotItem headerText={t('저녁')} itemKey="dinner">
-          <ListByMeal type="dinner" />
-        </PivotItem>
-      </Pivot>
-    </>
+    <Pivot className={$.menuContainer} defaultSelectedKey={showWhat}>
+      <PivotItem headerText={t('아침')} itemKey="breakfast">
+        <ListByMeal type="breakfast" />
+      </PivotItem>
+      <PivotItem headerText={t('점심')} itemKey="lunch">
+        <ListByMeal type="lunch" />
+      </PivotItem>
+      <PivotItem headerText={t('저녁')} itemKey="dinner">
+        <ListByMeal type="dinner" />
+      </PivotItem>
+    </Pivot>
   );
 };
 

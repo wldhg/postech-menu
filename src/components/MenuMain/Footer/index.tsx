@@ -17,7 +17,7 @@ const Footer: React.SFC = () => {
 
   /* Delivery Menu */
   const movePolivery = () => {
-    window.location.href = 'http://polivery.ml/?search';
+    window.open('http://polivery.ml/?search', '_blank');
   };
 
   /* Error Report */
