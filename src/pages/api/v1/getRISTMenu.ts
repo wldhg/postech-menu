@@ -67,10 +67,14 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
             ristParsing = false;
             O.end(ristRet);
           } else {
+            ristMenu.breakfast = {};
             ristMenu.lunch = {};
             ristMenu.dinner = {};
             for (let idx = 0; idx < data.length; idx += 1) {
               const meal = data[idx];
+              if (meal.if_menu_nm.indexOf('R)') === 0) {
+                meal.if_menu_nm = meal.if_menu_nm.substring(2).trim();
+              }
               if (meal.meal_type_nm === '조식') {
                 if (ristMenu.breakfast[meal.dinner_type_nm]) {
                   ristMenu.breakfast[meal.dinner_type_nm].push(meal.if_menu_nm);
