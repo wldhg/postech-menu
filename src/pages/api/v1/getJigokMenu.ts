@@ -55,8 +55,11 @@ const jigokMenu = {
   },
 };
 
-let jigokDate = '';
 let jigokParsing = false;
+const jigokDate = {
+  en: '',
+  ko: '',
+};
 const jigokRet = {
   en: '',
   ko: '',
@@ -71,7 +74,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   // Process It
   O.setHeader('Content-Type', 'application/json; charset=utf-8');
   if (
-    jigokDate === moment().format('YYYYMMDD')
+    jigokDate[locale] === moment().format('YYYYMMDD')
     && jigokMenu[locale].dinner.length > 0
   ) {
     O.end(jigokRet[locale]);
@@ -107,7 +110,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
               if (body(tr).text().indexOf('등록된 메뉴가 없습니다') > -1) {
                 jigokMenu[locale] = jigokNoMenu[locale];
                 jigokRet[locale] = JSON.stringify(jigokMenu[locale]);
-                jigokDate = moment().format('YYYYMMDD');
+                jigokDate[locale] = moment().format('YYYYMMDD');
                 jigokParsing = false;
                 O.end(jigokRet[locale]);
               } else {
@@ -163,7 +166,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   if (dinnerCompleted) {
                     clearTimeout(timeout);
                     jigokRet[locale] = JSON.stringify(jigokMenu[locale]);
-                    jigokDate = moment().format('YYYYMMDD');
+                    jigokDate[locale] = moment().format('YYYYMMDD');
                     jigokParsing = false;
                     O.end(jigokRet[locale]);
                   }

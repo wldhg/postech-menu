@@ -31,11 +31,17 @@ body {
 
 h1 {
   margin: 0 0 10px 0; }
-  h1 .tWxzn0 {
+  h1 .tWxzn0, h1 .VcUXMg {
     color: #ffc206;
+    display: inline-block; }
+  h1 .tWxzn0 {
+    margin-right: 10px;
     font-weight: 700; }
+  h1 .VcUXMg {
+    color: var(--fg-color);
+    font-weight: 400; }
 
-.kBiXVF {
+.Bbejw5 {
   margin-bottom: 5px; }
 
 .uuRsHW {
@@ -77,13 +83,32 @@ h1 {
           .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .zuDV1X {
             font-weight: 700;
             color: #ffc206; }
+          .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .pbKKrb {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0 0 0 10px;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer; }
+            .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .pbKKrb:hover svg path, .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .pbKKrb:focus svg path {
+              fill: var(--fg-color); }
+            .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .pbKKrb svg {
+              width: 1.6em; }
+              .uuRsHW .HXwtdU .AeZacd > div[data-list] h4 .pbKKrb svg path {
+                fill: #ffc206;
+                transition: fill .3s ease-in-out; }
         .uuRsHW .HXwtdU .AeZacd > div[data-list] p {
           margin: .8em 0; }
           .uuRsHW .HXwtdU .AeZacd > div[data-list] p:first-child {
             margin-top: 0; }
 
-._84e9d0 p:first-of-type {
+._84e9d0 p:first-of-type, .wgR3bh p:first-of-type {
   margin-top: 0; }
+
+._84e9d0 a, .wgR3bh a {
+  color: #ffc206; }
 
 footer {
   padding: 20px;
@@ -93,7 +118,8 @@ footer {
     margin-top: 2px;
     display: none; }
     footer .BGWyPO.ERXCFE {
-      display: flex; }
+      display: flex;
+      flex-direction: row; }
   footer p {
     margin: 10px 0 0;
     color: gray !important; }

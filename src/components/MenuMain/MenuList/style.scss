@@ -61,6 +61,32 @@
             font-weight: 700;
             color: $monet;
           }
+
+          .translate {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0 0 0 10px;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+
+            &:hover, &:focus {
+              svg path {
+                fill: var(--fg-color);
+              }
+            }
+
+            svg {
+              width: 1.6em;
+
+              path {
+                fill: $monet;
+                transition: fill .3s ease-in-out;
+              }
+            }
+          }
         }
 
         p {

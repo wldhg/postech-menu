@@ -6,6 +6,7 @@ import BrightnessMode from './BrightnessMode';
 import CaptureMenu from './CaptureMenu';
 import DispLocale from './DispLocale';
 import CookieInfo from './CookieInfo';
+import ThirdPartyLicense from './3rdPartyLicense';
 import useI18n from '../../I18n';
 
 import $ from './style.scss';
@@ -13,7 +14,7 @@ import D from './en.d.yml';
 
 const Footer: React.SFC = () => {
   /* States */
-  const { t } = useI18n(D);
+  const { t, getLocale } = useI18n(D);
 
   /* Delivery Menu */
   const movePolivery = () => {
@@ -38,6 +39,7 @@ const Footer: React.SFC = () => {
           {t('배달 음식')}
         </ActionButton>
         <CaptureMenu />
+        {/* <ActionButton disabled>식당 선택</ActionButton> */}
         <BrightnessMode />
       </div>
       <div>
@@ -45,7 +47,11 @@ const Footer: React.SFC = () => {
         <ActionButton onClick={moveGitHub}>GitHub</ActionButton>
         <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
         <CookieInfo />
-        {/* <ActionButton disabled>식당 선택</ActionButton> */}
+        {
+          getLocale() === 'en' && (
+            <ThirdPartyLicense />
+          )
+        }
         <DispLocale />
       </div>
       <p>
@@ -53,12 +59,12 @@ const Footer: React.SFC = () => {
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}
-          <a href="mailto:dev@haze.dog">{t('아지래견')}</a>
+          <a href="mailto:dev@haze.dog">{t('아지랑이 개')}</a>
           .
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">20200225.2</Text>
+        <Text variant="smallPlus">20200310.1</Text>
       </p>
     </footer>
   );

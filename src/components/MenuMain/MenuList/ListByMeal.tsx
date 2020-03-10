@@ -31,7 +31,7 @@ const ListByMeal: React.SFC<Props> = (props: Props) => {
             {t('RIST 식당')}
           </Text>
         </h3>
-        <MealByPlace place="rist" type={type} />
+        <MealByPlace place="rist" type={type} engTranslationRequired />
       </div>
     </div>
   );

@@ -1,9 +1,19 @@
 h1 {
   margin: 0 0 10px 0;
 
-  .title {
+  .title, .date {
     color: $monet;
+    display: inline-block;
+  }
+
+  .title {
+    margin-right: 10px;
     font-weight: 700;
+  }
+
+  .date {
+    color: var(--fg-color);
+    font-weight: 400;
   }
 }
 

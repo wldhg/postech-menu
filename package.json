@@ -2,7 +2,7 @@
   "name": "postech-menu",
   "version": "1.0.0-beta",
   "description": "POSTECH Cafeteria Menu Viewer",
-  "main": "src/",
+  "main": "src/next.config.js",
   "author": "Haze Dog <dev@haze.dog>",
   "license": "UNLICENSED",
   "private": true,
