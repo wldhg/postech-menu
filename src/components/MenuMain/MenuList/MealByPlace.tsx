@@ -49,8 +49,9 @@ const MealByPlace: React.SFC<Props> = (props: Props) => {
                     title="Translate To English"
                     className={$.translate}
                     onClick={() => {
+                      const text = `${menuTitles[idx].replace('일반식', '일반 식단')}\n\n${menu[menuTitles[idx]].map((_) => _.trim()).join('\n')}`;
                       const ntp = window.open(
-                        `https://translate.google.com/?vi=c#ko/en/${window.encodeURIComponent(menu[menuTitles[idx]].map((_) => _.trim()).join('\n'))}`,
+                        `https://translate.google.com/?vi=c#ko/en/${window.encodeURIComponent(text)}`,
                         '_blank',
                       );
                       ntp.focus();
