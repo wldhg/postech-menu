@@ -29,7 +29,9 @@ const ThirdPartyLicense: React.SFC = () => {
           title: 'Open Source License Notice',
           showCloseButton: false,
         }}
-        className={$.oslDialog}
+        modalProps={{
+          className: $.oslDialog,
+        }}
       >
         <p>
           &ldquo;Google Translate&rdquo; icon in this page was made by&nbsp;

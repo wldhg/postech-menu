@@ -59,12 +59,12 @@ const Footer: React.SFC = () => {
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}
-          <a href="mailto:dev@haze.dog">{t('아지랑이 개')}</a>
+          <a href="mailto:dev@haze.dog">HazeDog</a>
           .
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">20200310.1</Text>
+        <Text variant="smallPlus">20200320.1</Text>
       </p>
     </footer>
   );
