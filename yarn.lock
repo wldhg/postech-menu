@@ -958,10 +958,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@fluentui/react-focus@^7.1.10":
-  version "7.1.10"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-focus/-/react-focus-7.1.10.tgz#3496f36a0985764fd24c0c918a21d5a9ca0a8268"
-  integrity sha512-PPCjJLAeX+aNPq0cRYbqc9aOXPEpOF8mY1EMxLXJr75IAVDP6GR0SrQW9tWaoYhUll58TlHdvNMi3nyQe/TzQw==
+"@fluentui/react-focus@^7.1.11":
+  version "7.1.11"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-focus/-/react-focus-7.1.11.tgz#9ba91734c5626361fb57f50ee09c01126ecbb99a"
+  integrity sha512-1adzlSYQuaV/+MeoY5vC5/Kn0Ws6DES+h6FPTF4gHnIHi7XKcbVBDkWYwUWP4Un0IV7H+AmdV324KZCDvRL/Pg==
   dependencies:
     "@uifabric/merge-styles" "^7.8.10"
     "@uifabric/set-version" "^7.0.9"
@@ -5776,12 +5776,12 @@ object.values@^1.1.0, object.values@^1.1.1:
     function-bind "^1.1.1"
     has "^1.0.3"
 
-office-ui-fabric-react@^7.105.3:
-  version "7.105.3"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-7.105.3.tgz#85b85b8013ba07b0513ab461e1f52469051c2f44"
-  integrity sha512-BFOwPZFlE+1T6RgroYyKKR+xBhTun8MXjX5Rr5Gt7hHNFun8NmftNWc6M60jcf+CQ9Gt71qQysFcaUFmII/24w==
+office-ui-fabric-react@^7.105.4:
+  version "7.105.4"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-7.105.4.tgz#0ea87d084d62afabf8ab7e7d432e15845670e69a"
+  integrity sha512-2GUPHlqVJPgA1WpKwmt4p84xrmeleOYa87hja0PzDkAAZ0/nxSg9e+fnfj3FYbi3J3IvaA6PpGaONeEsMBv8tg==
   dependencies:
-    "@fluentui/react-focus" "^7.1.10"
+    "@fluentui/react-focus" "^7.1.11"
     "@microsoft/load-themed-styles" "^1.10.26"
     "@uifabric/foundation" "^7.5.23"
     "@uifabric/icons" "^7.3.22"

@@ -120,7 +120,27 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   let parsed = [text];
                   if (text.indexOf('"') === 0) {
                     parsed = text.substring(1, text.length - 1).split('"\n"')
-                      .map((item) => item.split('\n')[locale === 'ko' ? 0 : 1]);
+                      .map((item) => {
+                        const splitedItem = item.split('\n');
+                        let menuName = splitedItem[0];
+                        if (locale === 'ko') {
+                          for (let i = 1; i < splitedItem.length; i += 1) {
+                            if (splitedItem[i].match(/[a-zA-Z]/g) === null) {
+                              menuName += ` ${splitedItem[i]}`;
+                            } else {
+                              break;
+                            }
+                          }
+                        } else {
+                          for (let i = 1; i < splitedItem.length; i += 1) {
+                            if (splitedItem[i].match(/[a-zA-Z]/g) !== null) {
+                              menuName = splitedItem.slice(i).join(' ');
+                              break;
+                            }
+                          }
+                        }
+                        return menuName;
+                      });
                   } else if (text.indexOf('\n') === -1) {
                     if (locale === 'ko') {
                       parsed = [text.substring(0, text.indexOf(' '))];
