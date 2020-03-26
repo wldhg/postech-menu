@@ -64,7 +64,7 @@ const Footer: React.SFC = () => {
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">20200320.1</Text>
+        <Text variant="smallPlus">20200326.0</Text>
       </p>
     </footer>
   );

@@ -39,7 +39,7 @@ const CaptureMenu: React.SFC = () => {
         }).then((canvas) => {
           const dateString = moment().format('YYYYMMDD');
           const selectedMealButton: HTMLButtonElement = document.querySelector(
-            '.ms-Pivot-link[aria-selected="true"]',
+            '.ms-Pivot-link.is-selected',
           );
           const selectedMealType = selectedMealButton.dataset.content;
           download(
