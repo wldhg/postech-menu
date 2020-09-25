@@ -16,17 +16,22 @@ const jigokFailed = {
   },
 };
 
-const jigokTimeout = {
-  ko: {
-    breakfast: ['API 처리 시간을 초과하였습니다.'],
-    lunch: ['API 처리 시간을 초과하였습니다.'],
-    dinner: ['API 처리 시간을 초과하였습니다.'],
-  },
-  en: {
-    breakfast: ['API processing timed out.'],
-    lunch: ['API processing timed out.'],
-    dinner: ['API processing timed out.'],
-  },
+let jigokTimeoutCount = 0;
+const jigokTimeout = () => {
+  jigokTimeoutCount += 1;
+  return {
+    ko: {
+      breakfast: ['API 처리 시간을 초과하였습니다.'],
+      lunch: ['API 처리 시간을 초과하였습니다.'],
+      dinner: ['API 처리 시간을 초과하였습니다.'],
+    },
+    en: {
+      breakfast: ['API processing timed out.'],
+      lunch: ['API processing timed out.'],
+      dinner: ['API processing timed out.'],
+    },
+    cnt: jigokTimeoutCount,
+  };
 };
 
 const jigokNoMenu = {
@@ -101,7 +106,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
       if (!error && response && response.statusCode === 200) {
         const timeout = setTimeout(() => {
           jigokParsing = false;
-          O.end(JSON.stringify(jigokTimeout[locale]));
+          O.end(JSON.stringify(jigokTimeout()[locale]));
         }, 7000);
         try {
           const body = cheerio.load(raw);
