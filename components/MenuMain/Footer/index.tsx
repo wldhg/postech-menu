@@ -23,7 +23,7 @@ const Footer: React.SFC = () => {
 
   /* Error Report */
   const moveErrorReport = () => {
-    window.location.href = 'mailto:menu-error@haze.dog';
+    window.location.href = 'mailto:dev@laffey.kr';
   };
 
   /* GitHub */
@@ -59,7 +59,7 @@ const Footer: React.SFC = () => {
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}
-          <a href="mailto:dev@haze.dog">HazeDog</a>
+          <a href="mailto:dev@laffey.kr">{t('실토')}</a>
           .
         </Text>
       </p>

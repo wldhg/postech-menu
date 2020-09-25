@@ -158,7 +158,7 @@ const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
   },
 };
 
-const APIServer = 'https://monet.haze.dog/api';
+const APIServer = '/api';
 
 const parallelizeMenu = (menu: string[], locale: I18nLocale): MealMenu => {
   let cache: MealMenu = [];

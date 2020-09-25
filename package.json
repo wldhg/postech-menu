@@ -2,16 +2,12 @@
   "name": "postech-menu",
   "version": "1.0.0-beta",
   "description": "POSTECH Cafeteria Menu Viewer",
-  "main": "src/next.config.js",
-  "author": "Haze Dog <dev@haze.dog>",
+  "author": "Avowal <dev@laffey.kr>",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "cd src && next start . -p 51124 -H 127.0.0.1",
-    "dev": "cd src && next dev . -p 8281",
-    "dev-product": "cd src && next dev . -p 51124 -H 127.0.0.1",
-    "build": "cd src && next build .",
-    "export": "cd src && next export . -o ../docs"
+    "local": "yarn vercel dev",
+    "upload": "yarn vercel deploy --prod"
   },
   "dependencies": {
     "@types/node": "^13.7.1",
@@ -45,6 +41,7 @@
     "react-dom": "^16.13.1",
     "request": "^2.88.2",
     "typescript": "^3.8.3",
+    "vercel": "^20.1.1",
     "webpack": "^4.42.1"
   }
 }

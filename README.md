@@ -1,7 +1,7 @@
-POSTECH Menu <img src="./src/public/images/buzz_fly.gif" height="22" />
+POSTECH Menu <img src="./public/images/buzz_fly.gif" height="22" />
 =======================================================================
 
-POSTECH Cafeteria Menu Viewer. Now in service: [menu.haze.dog](https://menu.haze.dog/).
+POSTECH Cafeteria Menu Viewer. Now in service: [menu.laffey.kr](https://menu.laffey.kr/).
 
 Planned Features
 ----------------
@@ -23,4 +23,4 @@ Planned Features
 
 Other licenses from 3rd-party such as development tools are written in each links of [yarn.lock](./yarn.lock) file.
 
-&copy; Haze Dog.
+&copy; Avowal.

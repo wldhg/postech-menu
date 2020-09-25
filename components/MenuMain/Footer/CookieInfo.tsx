@@ -46,7 +46,7 @@ const CaptureMenu: React.SFC = () => {
           {t('Microsoft Internet Explorer에서는 호환성 안내 메시지 표출 여부 저장을 위한 쿠키를 추가로 사용하는데, 이 역시 서버에 업로드되지 않으며 브라우저에 저장된 내용은 브라우저 종료 시 삭제됩니다.')}
         </p>
         <p>
-          {t('Haze Dog는 사용자가 이 사이트를 이용하는 것으로 기술한 바 대로의 쿠키 기술 사용에 동의한 것으로 간주합니다.')}
+          {t('실토는 사용자가 이 사이트를 이용하는 것으로 기술한 바 대로의 쿠키 기술 사용에 동의한 것으로 간주합니다.')}
         </p>
         <DialogFooter>
           <PrimaryButton onClick={closeDialog} text={t('닫기')} />
