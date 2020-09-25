@@ -26,7 +26,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     let timeouted = false;
     setTimeout(() => {
       timeouted = true;
-    }, 1500);
+    }, 10000);
     const checkInterval = setInterval(() => {
       if (Object.keys(ristMenu.dinner).length > 0) {
         O.end(ristRet);

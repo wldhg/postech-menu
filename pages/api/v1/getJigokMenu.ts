@@ -102,7 +102,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
         const timeout = setTimeout(() => {
           jigokParsing = false;
           O.end(JSON.stringify(jigokTimeout[locale]));
-        }, 1500);
+        }, 10000);
         try {
           const body = cheerio.load(raw);
           body('.list_td tr').each((ri, tr) => {

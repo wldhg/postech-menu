@@ -83,7 +83,7 @@ const WrapperContent: React.SFC<Props> = (props: Props) => {
         <script dangerouslySetInnerHTML={{ __html: localeInit }} />
 
         {/* Meta Tags */}
-        <meta name="theme-color" content="#ffc206" />
+        <meta name="theme-color" content="#6666cc" />
         <meta name="robots" content="noimageindex" />
         <meta name="description" content={metaDescription} />
         <meta name="viewport" content="width=390, user-scalable=no" />

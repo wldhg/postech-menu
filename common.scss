@@ -1,8 +1,8 @@
 // Look Also: ./components/Theme.tsx
 
-$monet: #ffc206;
-$white: #fefefe;
-$black: #1b1b1b;
+$monet: #66c;
+$white: #fff;
+$black: #1a1918;
 
 @mixin onMobile {
   @media screen and (orientation: portrait) and (max-width: 440px) {
