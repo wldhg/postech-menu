@@ -26,9 +26,9 @@ const Footer: React.SFC = () => {
     window.location.href = 'mailto:dev@laffey.kr';
   };
 
-  /* GitHub */
-  const moveGitHub = () => {
-    window.location.href = 'https://github.com/wldh-g/postech-menu';
+  /* Status */
+  const moveStatus = () => {
+    window.open('https://status.menu.laffey.kr/', '_blank');
   };
 
   /* Render */
@@ -41,30 +41,35 @@ const Footer: React.SFC = () => {
         <CaptureMenu />
         {/* <ActionButton disabled>식당 선택</ActionButton> */}
         <BrightnessMode />
+        <DispLocale />
       </div>
       <div>
-        {/* <ActionButton disabled>API</ActionButton> */}
-        <ActionButton onClick={moveGitHub}>GitHub</ActionButton>
-        <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
         <CookieInfo />
         {
           getLocale() === 'en' && (
             <ThirdPartyLicense />
           )
         }
-        <DispLocale />
+        <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
+        <ActionButton onClick={moveStatus}>{t('API 상태')}</ActionButton>
       </div>
       <p>
         <Text variant="smallPlus">{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}
-          <a href="mailto:dev@laffey.kr">{t('실토')}</a>
+          <a
+            href="https://github.com/wldh-g/postech-menu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('실토')}
+          </a>
           .
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">20200926.0</Text>
+        <Text variant="smallPlus">20200926.1</Text>
       </p>
     </footer>
   );
