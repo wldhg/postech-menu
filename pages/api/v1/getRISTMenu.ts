@@ -54,7 +54,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
             lunch: ['API 처리 시간을 초과하였습니다.'],
             dinner: ['API 처리 시간을 초과하였습니다.'],
           }));
-        }, 1500);
+        }, 6500);
         try {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {

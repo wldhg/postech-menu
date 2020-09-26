@@ -5,7 +5,7 @@ import { ThemeEnabled } from '../Theme';
 import { Content, Props } from './Content';
 
 /* eslint-disable react/jsx-props-no-spreading */
-const Wrapper: React.SFC<Props> = (props: Props) => (
+const Wrapper: React.FC<Props> = (props: Props) => (
   <I18nEnabled>
     <APIEnabled>
       <ThemeEnabled>

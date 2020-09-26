@@ -6,8 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "local": "yarn vercel dev",
-    "upload": "yarn vercel deploy --prod"
+    "local-dev": "set NEXT_PUBLIC_OPERATION_MODE=api&& next dev",
+    "local-dev-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next dev",
+    "local": "set NEXT_PUBLIC_OPERATION_MODE=api&& next build&& next start",
+    "local-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next build&& next start",
+    "upload": "vercel deploy --prod"
   },
   "dependencies": {
     "@types/node": "^13.7.1",
@@ -33,7 +36,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "js-yaml-loader": "^1.2.2",
     "moment": "^2.24.0",
-    "next": "^9.3.1",
+    "next": "^9.5.3",
     "node-sass": "^4.13.1",
     "office-ui-fabric-react": "^7.105.4",
     "react": "^16.13.1",

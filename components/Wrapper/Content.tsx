@@ -18,7 +18,7 @@ export interface Props {
 
 // React Wrapper
 /* eslint-disable react-hooks/exhaustive-deps */
-const WrapperContent: React.SFC<Props> = (props: Props) => {
+const WrapperContent: React.FC<Props> = (props: Props) => {
   // States
   const { t, setLocale } = useI18n(D);
   const { setTheme } = useTheme();
