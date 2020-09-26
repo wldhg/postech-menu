@@ -23,7 +23,7 @@ const ristMenu = {
 
 let ristParsing = false;
 let ristDate = '00000000';
-let ristRet = '';
+let ristRet = (locale) => '';
 
 const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   // Set Locale
@@ -33,7 +33,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   }
   O.setHeader('Content-Type', 'application/json; charset=utf-8');
   if (ristDate === moment().format('YYYYMMDD')) {
-    O.end(ristRet);
+    O.end(ristRet(locale));
   } else if (ristParsing) {
     let timeouted = false;
     setTimeout(() => {
@@ -42,7 +42,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     const checkInterval = setInterval(() => {
       if (Object.keys(ristMenu.dinner).length > 0) {
         clearInterval(checkInterval);
-        O.end(ristRet);
+        O.end(ristRet(locale));
       } else if (timeouted) {
         clearInterval(checkInterval);
       }
@@ -79,7 +79,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {
             clearTimeout(timeout);
-            ristRet = JSON.stringify({
+            ristRet = (lo) => JSON.stringify({
               ko: {
                 breakfast: ['식사가 없는 날입니다.'],
                 lunch: ['식사가 없는 날입니다.'],
@@ -90,10 +90,10 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                 lunch: ['There\'re no meals today.'],
                 dinner: ['There\'re no meals today.'],
               },
-            }[locale]);
+            }[lo]);
             ristDate = moment().format('YYYYMMDD');
             ristParsing = false;
-            O.end(ristRet);
+            O.end(ristRet(locale));
           } else {
             ristMenu.breakfast = {};
             ristMenu.lunch = {};
@@ -143,14 +143,14 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   ko: ['식사 정보가 없습니다.'],
                   en: ['There\'s no meal information.'],
                 };
-                ristRet = JSON.stringify({
-                  breakfast: ristBreakfast.length > 0 ? ristBreakfast : noMealInfo[locale],
-                  lunch: ristLunch.length > 0 ? ristLunch : noMealInfo[locale],
-                  dinner: ristDinner.length > 0 ? ristDinner : noMealInfo[locale],
+                ristRet = (lo) => JSON.stringify({
+                  breakfast: ristBreakfast.length > 0 ? ristBreakfast : noMealInfo[lo],
+                  lunch: ristLunch.length > 0 ? ristLunch : noMealInfo[lo],
+                  dinner: ristDinner.length > 0 ? ristDinner : noMealInfo[lo],
                 });
                 ristDate = moment().format('YYYYMMDD');
                 ristParsing = false;
-                O.end(ristRet);
+                O.end(ristRet(locale));
               }
             }
           }
