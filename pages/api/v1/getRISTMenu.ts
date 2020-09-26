@@ -29,8 +29,8 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     }, 7000);
     const checkInterval = setInterval(() => {
       if (Object.keys(ristMenu.dinner).length > 0) {
-        O.end(ristRet);
         clearInterval(checkInterval);
+        O.end(ristRet);
       } else if (timeouted) {
         clearInterval(checkInterval);
       }
@@ -59,6 +59,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
         try {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {
+            clearTimeout(timeout);
             ristRet = JSON.stringify({
               breakfast: ['식사가 없는 날입니다.'],
               lunch: ['식사가 없는 날입니다.'],
@@ -96,6 +97,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                 }
               }
               if (idx === (data.length - 1)) {
+                clearTimeout(timeout);
                 const ristBreakfast = [];
                 const ristLunch = [];
                 const ristDinner = [];
@@ -111,7 +113,6 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   ristDinner.push(`== ${dk}`);
                   ristDinner.push(...ristMenu.dinner[dk]);
                 });
-                clearTimeout(timeout);
                 ristRet = JSON.stringify({
                   breakfast: ristBreakfast.length > 0 ? ristBreakfast : ['식사 정보가 없습니다.'],
                   lunch: ristLunch.length > 0 ? ristLunch : ['식사 정보가 없습니다.'],

@@ -90,8 +90,8 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     }, 7000);
     const checkInterval = setInterval(() => {
       if (jigokMenu[locale].dinner.length > 0) {
-        O.end(jigokRet[locale]);
         clearInterval(checkInterval);
+        O.end(jigokRet[locale]);
       } else if (timeouted) {
         clearInterval(checkInterval);
       }
@@ -114,6 +114,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
           body('.list_td tr').each((ri, tr) => {
             if (ri === 3) {
               if (body(tr).text().indexOf('등록된 메뉴가 없습니다') > -1) {
+                clearTimeout(timeout);
                 jigokMenu[locale] = jigokNoMenu[locale];
                 jigokRet[locale] = JSON.stringify(jigokMenu[locale]);
                 jigokDate[locale] = moment().format('YYYYMMDD');
