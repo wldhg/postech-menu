@@ -38,7 +38,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     let timeouted = false;
     setTimeout(() => {
       timeouted = true;
-    }, 7000);
+    }, 2000);
     const checkInterval = setInterval(() => {
       if (Object.keys(ristMenu.dinner).length > 0) {
         clearInterval(checkInterval);
@@ -46,7 +46,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
       } else if (timeouted) {
         clearInterval(checkInterval);
       }
-    }, 300);
+    }, 1400);
   } else {
     ristParsing = true;
     request.post({

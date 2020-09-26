@@ -87,7 +87,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     let timeouted = false;
     setTimeout(() => {
       timeouted = true;
-    }, 7000);
+    }, 2000);
     const checkInterval = setInterval(() => {
       if (jigokMenu[locale].dinner.length > 0) {
         clearInterval(checkInterval);
@@ -108,7 +108,7 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
         const timeout = setTimeout(() => {
           jigokParsing = false;
           O.end(JSON.stringify(jigokTimeout()[locale]));
-        }, 6100);
+        }, 1400);
         try {
           const body = cheerio.load(raw);
           body('.list_td tr').each((ri, tr) => {
