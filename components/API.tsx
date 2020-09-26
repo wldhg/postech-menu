@@ -209,6 +209,7 @@ const getJigokMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   };
   if (JigokAPIServerTarget >= APIServers.length) {
     dispatch(jigokFailed);
+    JigokAPIServerTarget = 0;
   } else {
     const trialServ = JigokAPIServerTarget;
     fetch(`${APIServers[JigokAPIServerTarget]}/v1/getJigokMenu?locale=${locale}`, {
@@ -253,6 +254,7 @@ const getRISTMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   };
   if (JigokAPIServerTarget >= APIServers.length) {
     dispatch(ristFailed);
+    RISTAPIServerTarget = 0;
   } else {
     const trialServ = JigokAPIServerTarget;
     fetch(`${APIServers[RISTAPIServerTarget]}/v1/getRISTMenu?locale=${locale}`, {
