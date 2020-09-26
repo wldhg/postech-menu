@@ -161,7 +161,7 @@ const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
 const APIServers = [
   'https://ant.menu.laffey.kr/api',
   'https://bb.menu.laffey.kr/api',
-  'https://rx.menu.laffey.kr:9898/api',
+  'https://rx.menu.laffey.kr:9098/api',
   '/api',
 ];
 
