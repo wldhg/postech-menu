@@ -3,9 +3,16 @@ import moment from 'moment';
 import http from 'http';
 
 const ristFailed = {
-  breakfast: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
-  lunch: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
-  dinner: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+  ko: {
+    breakfast: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+    lunch: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+    dinner: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+  },
+  en: {
+    breakfast: ['Failed to access Shinsegae food service.'],
+    lunch: ['Failed to access Shinsegae food service.'],
+    dinner: ['Failed to access Shinsegae food service.'],
+  },
 };
 
 const ristMenu = {
@@ -19,6 +26,11 @@ let ristDate = '00000000';
 let ristRet = '';
 
 const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
+  // Set Locale
+  let locale = (new URL(`http://localhost${I.url}`)).searchParams.get('locale');
+  if (!(locale === 'ko' || locale === 'en')) {
+    locale = 'ko';
+  }
   O.setHeader('Content-Type', 'application/json; charset=utf-8');
   if (ristDate === moment().format('YYYYMMDD')) {
     O.end(ristRet);
@@ -51,20 +63,34 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
         const timeout = setTimeout(() => {
           ristParsing = false;
           O.end(JSON.stringify({
-            breakfast: ['API 처리 시간을 초과하였습니다.'],
-            lunch: ['API 처리 시간을 초과하였습니다.'],
-            dinner: ['API 처리 시간을 초과하였습니다.'],
-          }));
+            ko: {
+              breakfast: ['API 처리 시간을 초과하였습니다.'],
+              lunch: ['API 처리 시간을 초과하였습니다.'],
+              dinner: ['API 처리 시간을 초과하였습니다.'],
+            },
+            en: {
+              breakfast: ['API processing timed out.'],
+              lunch: ['API processing timed out.'],
+              dinner: ['API processing timed out.'],
+            },
+          }[locale]));
         }, 6100);
         try {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {
             clearTimeout(timeout);
             ristRet = JSON.stringify({
-              breakfast: ['식사가 없는 날입니다.'],
-              lunch: ['식사가 없는 날입니다.'],
-              dinner: ['식사가 없는 날입니다.'],
-            });
+              ko: {
+                breakfast: ['식사가 없는 날입니다.'],
+                lunch: ['식사가 없는 날입니다.'],
+                dinner: ['식사가 없는 날입니다.'],
+              },
+              en: {
+                breakfast: ['There\'re no meals today.'],
+                lunch: ['There\'re no meals today.'],
+                dinner: ['There\'re no meals today.'],
+              },
+            }[locale]);
             ristDate = moment().format('YYYYMMDD');
             ristParsing = false;
             O.end(ristRet);
@@ -113,10 +139,14 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   ristDinner.push(`== ${dk}`);
                   ristDinner.push(...ristMenu.dinner[dk]);
                 });
+                const noMealInfo = {
+                  ko: ['식사 정보가 없습니다.'],
+                  en: ['There\'s no meal information.'],
+                };
                 ristRet = JSON.stringify({
-                  breakfast: ristBreakfast.length > 0 ? ristBreakfast : ['식사 정보가 없습니다.'],
-                  lunch: ristLunch.length > 0 ? ristLunch : ['식사 정보가 없습니다.'],
-                  dinner: ristDinner.length > 0 ? ristDinner : ['식사 정보가 없습니다.'],
+                  breakfast: ristBreakfast.length > 0 ? ristBreakfast : noMealInfo[locale],
+                  lunch: ristLunch.length > 0 ? ristLunch : noMealInfo[locale],
+                  dinner: ristDinner.length > 0 ? ristDinner : noMealInfo[locale],
                 });
                 ristDate = moment().format('YYYYMMDD');
                 ristParsing = false;
@@ -127,11 +157,11 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
         } catch (e) {
           clearTimeout(timeout);
           ristParsing = false;
-          O.end(JSON.stringify(ristFailed));
+          O.end(JSON.stringify(ristFailed[locale]));
         }
       } else {
         ristParsing = false;
-        O.end(JSON.stringify(ristFailed));
+        O.end(JSON.stringify(ristFailed[locale]));
       }
     });
   }
