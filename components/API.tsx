@@ -191,92 +191,116 @@ const parallelizeMenu = (menu: string[], locale: I18nLocale): MealMenu => {
   return cache;
 };
 
-let JigokAPIServerTarget = 0;
-const JigokErrorCount = new Array(APIServers.length).fill(0);
-const setNextJigokEndpoint = (trial) => {
-  if (JigokErrorCount[JigokAPIServerTarget] > 2) {
-    JigokAPIServerTarget += 1;
-    // eslint-disable-next-line no-console
-    console.info(`Using API endpoint ${JigokAPIServerTarget} for Jigok menu.`);
-  } else {
-    JigokErrorCount[trial] += 1;
-  }
-};
 const getJigokMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   const jigokFailed: APIAction = {
     type: 'UPDATE_MENU', place: 'jigok', rawMenu: APIFailedObject[locale],
   };
-  if (JigokAPIServerTarget >= APIServers.length) {
-    dispatch(jigokFailed);
-    JigokAPIServerTarget = 0;
-  } else {
-    const trialServ = JigokAPIServerTarget;
-    fetch(`${APIServers[JigokAPIServerTarget]}/v1/getJigokMenu?locale=${locale}`, {
-      method: 'GET',
-    }).then((response) => {
-      if (response.status === 200) {
-        response.json().then((data: APIResponse) => {
-          dispatch({
-            type: 'UPDATE_MENU',
-            place: 'jigok',
-            rawMenu: data,
-          });
+  let failTimeout;
+  const jigokFailChecker = new Promise<Response>((ok, no) => {
+    failTimeout = setTimeout(() => {
+      no();
+    }, 8000);
+  });
+  let jigokCounter = 0;
+  const jigokCount = () => {
+    jigokCounter += 1;
+    if (jigokCounter >= APIServers.length) {
+      clearTimeout(failTimeout);
+      dispatch(jigokFailed);
+    }
+  };
+  const jigokRequest: Promise<Response>[] = [jigokFailChecker];
+  for (let i = 0; i < APIServers.length; i += 1) {
+    jigokRequest.push(
+      new Promise((ok) => {
+        fetch(`${APIServers[i]}/v1/getJigokMenu?locale=${locale}`, {
+          method: 'GET',
+        }).then((res) => {
+          if (res.status !== 200) {
+            jigokCount();
+          } else {
+            ok(res);
+          }
         }).catch(() => {
-          setNextJigokEndpoint(trialServ);
-          getJigokMenu(locale, dispatch);
+          jigokCount();
         });
-      } else {
-        setNextJigokEndpoint(trialServ);
-        getJigokMenu(locale, dispatch);
-      }
-    }, () => {
-      setNextJigokEndpoint(trialServ);
-      getJigokMenu(locale, dispatch);
-    });
+      }),
+    );
   }
+  Promise.race(jigokRequest).then((response) => {
+    clearTimeout(failTimeout);
+    if (response.status === 200) {
+      response.json().then((data: APIResponse) => {
+        dispatch({
+          type: 'UPDATE_MENU',
+          place: 'jigok',
+          rawMenu: data,
+        });
+      }).catch(() => {
+        dispatch(jigokFailed);
+      });
+    } else {
+      dispatch(jigokFailed);
+    }
+  }).catch(() => {
+    clearTimeout(failTimeout);
+    dispatch(jigokFailed);
+  });
 };
 
-let RISTAPIServerTarget = 0;
-const RISTErrorCount = new Array(APIServers.length).fill(0);
-const setNextRISTEndpoint = (trial) => {
-  if (RISTErrorCount[RISTAPIServerTarget] > 2) {
-    RISTAPIServerTarget += 1;
-    // eslint-disable-next-line no-console
-    console.info(`Using API endpoint ${RISTAPIServerTarget} for RIST menu.`);
-  } else {
-    RISTErrorCount[trial] += 1;
-  }
-};
 const getRISTMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   const ristFailed: APIAction = {
     type: 'UPDATE_MENU', place: 'rist', rawMenu: APIFailedObject[locale],
   };
-  if (JigokAPIServerTarget >= APIServers.length) {
-    dispatch(ristFailed);
-    RISTAPIServerTarget = 0;
-  } else {
-    const trialServ = JigokAPIServerTarget;
-    fetch(`${APIServers[RISTAPIServerTarget]}/v1/getRISTMenu?locale=${locale}`, {
-      method: 'GET',
-    }).then((response) => {
-      if (response.status === 200) {
-        response.json().then((data: APIResponse) => {
-          dispatch({
-            type: 'UPDATE_MENU',
-            place: 'rist',
-            rawMenu: data,
-          });
+  let failTimeout;
+  const ristFailChecker = new Promise<Response>((ok, no) => {
+    failTimeout = setTimeout(() => {
+      no();
+    }, 8000);
+  });
+  let ristCounter = 0;
+  const ristCount = () => {
+    ristCounter += 1;
+    if (ristCounter >= APIServers.length) {
+      clearTimeout(failTimeout);
+      dispatch(ristFailed);
+    }
+  };
+  const ristRequest: Promise<Response>[] = [ristFailChecker];
+  for (let i = 0; i < APIServers.length; i += 1) {
+    ristRequest.push(
+      new Promise((ok) => {
+        fetch(`${APIServers[i]}/v1/getRISTMenu?locale=${locale}`, {
+          method: 'GET',
+        }).then((res) => {
+          if (res.status !== 200) {
+            ristCount();
+          } else {
+            ok(res);
+          }
         }).catch(() => {
-          setNextRISTEndpoint(trialServ);
-          getRISTMenu(locale, dispatch);
+          ristCount();
         });
-      } else {
-        setNextRISTEndpoint(trialServ);
-        getRISTMenu(locale, dispatch);
-      }
-    }, () => {
-      setNextRISTEndpoint(trialServ);
-      getRISTMenu(locale, dispatch);
-    });
+      }),
+    );
   }
+  Promise.race(ristRequest).then((response) => {
+    clearTimeout(failTimeout);
+    if (response.status === 200) {
+      response.json().then((data: APIResponse) => {
+        dispatch({
+          type: 'UPDATE_MENU',
+          place: 'rist',
+          rawMenu: data,
+        });
+      }).catch(() => {
+        dispatch(ristFailed);
+      });
+    } else {
+      dispatch(ristFailed);
+    }
+  }).catch(() => {
+    clearTimeout(failTimeout);
+    dispatch(ristFailed);
+  });
 };
