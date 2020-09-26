@@ -162,7 +162,6 @@ const APIServers = [
   'https://ant.menu.laffey.kr/api',
   'https://bb.menu.laffey.kr/api',
   'https://rx.menu.laffey.kr:9898/api',
-  'https://bt.menu.laffey.kr/api',
   '/api',
 ];
 
