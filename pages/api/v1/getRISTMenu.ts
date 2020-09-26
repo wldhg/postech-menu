@@ -30,6 +30,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
     const checkInterval = setInterval(() => {
       if (Object.keys(ristMenu.dinner).length > 0) {
         O.end(ristRet);
+        clearInterval(checkInterval);
       } else if (timeouted) {
         clearInterval(checkInterval);
       }
@@ -54,7 +55,7 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
             lunch: ['API 처리 시간을 초과하였습니다.'],
             dinner: ['API 처리 시간을 초과하였습니다.'],
           }));
-        }, 6500);
+        }, 6100);
         try {
           const data = JSON.parse(raw).result;
           if (data.length === 0) {
