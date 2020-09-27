@@ -42,6 +42,7 @@
     "react": "^16.13.1",
     "react-app": "^1.1.2",
     "react-dom": "^16.13.1",
+    "react-swipeable": "^5.5.1",
     "request": "^2.88.2",
     "typescript": "^3.8.3",
     "vercel": "^20.1.1",

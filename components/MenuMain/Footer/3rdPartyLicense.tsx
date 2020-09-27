@@ -6,7 +6,7 @@ import {
 import $ from './style.scss';
 
 /* eslint-disable no-console */
-const ThirdPartyLicense: React.SFC = () => {
+const ThirdPartyLicense: React.FC = () => {
   const [hideDialog, setHideDialog] = useState(true);
 
   /* 3rd Party License Info */

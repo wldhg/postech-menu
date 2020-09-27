@@ -12,7 +12,7 @@ import useI18n from '../../I18n';
 import $ from './style.scss';
 import D from './en.d.yml';
 
-const Footer: React.SFC = () => {
+const Footer: React.FC = () => {
   /* States */
   const { t, getLocale } = useI18n(D);
 

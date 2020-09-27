@@ -5,7 +5,7 @@ import useTheme from '../../Theme';
 
 import D from './en.d.yml';
 
-const BrightnessMode: React.SFC = () => {
+const BrightnessMode: React.FC = () => {
   const { t } = useI18n(D);
   const { setTheme, getTheme, isThemeLocked } = useTheme();
 

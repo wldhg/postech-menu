@@ -73,7 +73,7 @@ type APIDispatch = Dispatch<APIAction>;
 const APIDispatchContext = createContext<APIDispatch | undefined>(undefined);
 
 interface Props { children: React.ReactElement | React.ReactElement[] }
-export const APIEnabled: React.SFC<Props> = ({ children }: Props) => {
+export const APIEnabled: React.FC<Props> = ({ children }: Props) => {
   const [state, dispatch] = useReducer(apiReducer, initialAPIContext);
   return (
     <APIDispatchContext.Provider value={dispatch}>

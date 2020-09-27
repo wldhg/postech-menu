@@ -6,7 +6,7 @@ import useI18n from '../../I18n';
 import $ from './style.scss';
 import D from './en.d.yml';
 
-const Header: React.SFC = () => {
+const Header: React.FC = () => {
   const { t } = useI18n(D);
 
   return (

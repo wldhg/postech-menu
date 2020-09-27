@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Swipeable } from 'react-swipeable';
 import { Pivot, PivotItem } from 'office-ui-fabric-react';
 import ListByMeal from './ListByMeal';
 import useAPI from '../../API';
@@ -8,10 +9,11 @@ import $ from './style.scss';
 import D from './en.d.yml';
 
 /* eslint-disable react-hooks/exhaustive-deps */
-const MenuList: React.SFC = () => {
+const MenuList: React.FC = () => {
   // States
   const { setAPILocale, fetchMenu } = useAPI();
   const { t, getLocale } = useI18n(D);
+  const [showWhat, setShow] = useState('breakfast');
 
   // Fetch Menu Data
   useEffect(() => {
@@ -21,25 +23,66 @@ const MenuList: React.SFC = () => {
 
   // Set default menu pivot item by time
   const hour = (new Date()).getHours();
-  let showWhat = 'breakfast';
+  let defaultItem = 'breakfast';
   if (hour >= 14) {
-    showWhat = 'dinner';
+    defaultItem = 'dinner';
   } else if (hour >= 10) {
-    showWhat = 'lunch';
+    defaultItem = 'lunch';
   }
 
+  // Pivot event catcher
+  const onDispChange = (item?: PivotItem) => {
+    setShow(item.props.itemKey);
+    return false;
+  };
+
+  // Swipe events
+  const leftSwipe = () => {
+    switch (showWhat) {
+      case 'breakfast':
+        setShow('lunch');
+        break;
+      case 'lunch':
+        setShow('dinner');
+        break;
+      case 'dinner':
+      default:
+        break;
+    }
+  };
+  const rightSwipe = () => {
+    switch (showWhat) {
+      case 'dinner':
+        setShow('lunch');
+        break;
+      case 'lunch':
+        setShow('breakfast');
+        break;
+      case 'breakfast':
+      default:
+        break;
+    }
+  };
+
   return (
-    <Pivot className={$.menuContainer} defaultSelectedKey={showWhat}>
-      <PivotItem headerText={t('아침')} itemKey="breakfast">
-        <ListByMeal type="breakfast" />
-      </PivotItem>
-      <PivotItem headerText={t('점심')} itemKey="lunch">
-        <ListByMeal type="lunch" />
-      </PivotItem>
-      <PivotItem headerText={t('저녁')} itemKey="dinner">
-        <ListByMeal type="dinner" />
-      </PivotItem>
-    </Pivot>
+    <Swipeable onSwipedLeft={leftSwipe} onSwipedRight={rightSwipe}>
+      <Pivot
+        className={$.menuContainer}
+        defaultSelectedKey={defaultItem}
+        selectedKey={showWhat}
+        onLinkClick={onDispChange}
+      >
+        <PivotItem headerText={t('아침')} itemKey="breakfast">
+          <ListByMeal type="breakfast" />
+        </PivotItem>
+        <PivotItem headerText={t('점심')} itemKey="lunch">
+          <ListByMeal type="lunch" />
+        </PivotItem>
+        <PivotItem headerText={t('저녁')} itemKey="dinner">
+          <ListByMeal type="dinner" />
+        </PivotItem>
+      </Pivot>
+    </Swipeable>
   );
 };
 

@@ -6,7 +6,7 @@ import useI18n from '../I18n';
 
 import D from './en.d.yml';
 
-const IENotification: React.SFC = () => {
+const IENotification: React.FC = () => {
   // States
   const { t } = useI18n(D);
   const [showIENoti, setShowIENoti] = useState(false);

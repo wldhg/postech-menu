@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 import $ from './style.scss';
 
-const MenuMain: React.SFC = () => (
+const MenuMain: React.FC = () => (
   <Wrapper main className={$.container}>
     <main>
       <Header />

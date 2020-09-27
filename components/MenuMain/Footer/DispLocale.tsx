@@ -5,7 +5,7 @@ import useAPI from '../../API';
 
 import D from './en.d.yml';
 
-const DispLocale: React.SFC = () => {
+const DispLocale: React.FC = () => {
   const { getLocale, setLocale } = useI18n(D);
   const { setAPILocale, fetchMenu } = useAPI();
 

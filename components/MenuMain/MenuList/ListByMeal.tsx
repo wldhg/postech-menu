@@ -11,7 +11,7 @@ interface Props {
   type: MealType
 };
 
-const ListByMeal: React.SFC<Props> = (props: Props) => {
+const ListByMeal: React.FC<Props> = (props: Props) => {
   const { t } = useI18n(D);
   const { type } = props;
 

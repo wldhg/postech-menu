@@ -8,7 +8,7 @@ import $ from './style.scss';
 import D from './en.d.yml';
 
 /* eslint-disable no-console */
-const CaptureMenu: React.SFC = () => {
+const CaptureMenu: React.FC = () => {
   const { t } = useI18n(D);
   const [hideDialog, setHideDialog] = useState(true);
 

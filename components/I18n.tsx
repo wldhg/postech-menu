@@ -26,7 +26,7 @@ type I18nDispatch = Dispatch<I18nAction>;
 const LocaleDispatchContext = createContext<I18nDispatch | undefined>(undefined);
 
 interface Props { children: React.ReactElement | React.ReactElement[] }
-export const I18nEnabled: React.SFC<Props> = ({ children }: Props) => {
+export const I18nEnabled: React.FC<Props> = ({ children }: Props) => {
   const [state, dispatch] = useReducer(i18nReducer, initialLocaleContext);
   return (
     <LocaleDispatchContext.Provider value={dispatch}>

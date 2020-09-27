@@ -12,7 +12,7 @@ interface Props {
   engTranslationRequired?: boolean
 };
 
-const MealByPlace: React.SFC<Props> = (props: Props) => {
+const MealByPlace: React.FC<Props> = (props: Props) => {
   const { getMenu, isMenuLoaded } = useAPI();
   const { t, getLocale } = useI18n(D);
   const { place, type, engTranslationRequired } = props;
