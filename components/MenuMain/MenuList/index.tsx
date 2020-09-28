@@ -8,27 +8,27 @@ import useI18n from '../../I18n';
 import $ from './style.scss';
 import D from './en.d.yml';
 
+// Set default menu pivot item by time
+const hour = (new Date()).getHours();
+let defaultItem = 'breakfast';
+if (hour >= 14) {
+  defaultItem = 'dinner';
+} else if (hour >= 10) {
+  defaultItem = 'lunch';
+}
+
 /* eslint-disable react-hooks/exhaustive-deps */
 const MenuList: React.FC = () => {
   // States
   const { setAPILocale, fetchMenu } = useAPI();
   const { t, getLocale } = useI18n(D);
-  const [showWhat, setShow] = useState('breakfast');
+  const [showWhat, setShow] = useState(defaultItem);
 
   // Fetch Menu Data
   useEffect(() => {
     setAPILocale(getLocale());
     fetchMenu();
   }, [getLocale()]);
-
-  // Set default menu pivot item by time
-  const hour = (new Date()).getHours();
-  let defaultItem = 'breakfast';
-  if (hour >= 14) {
-    defaultItem = 'dinner';
-  } else if (hour >= 10) {
-    defaultItem = 'lunch';
-  }
 
   // Pivot event catcher
   const onDispChange = (item?: PivotItem) => {
@@ -68,7 +68,6 @@ const MenuList: React.FC = () => {
     <Swipeable onSwipedLeft={leftSwipe} onSwipedRight={rightSwipe}>
       <Pivot
         className={$.menuContainer}
-        defaultSelectedKey={defaultItem}
         selectedKey={showWhat}
         onLinkClick={onDispChange}
       >
