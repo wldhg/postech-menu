@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   MessageBar, MessageBarType,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import useI18n from '../I18n';
 
 import D from './en.d.yml';
@@ -15,14 +15,14 @@ const IENotification: React.FC = () => {
   useEffect(() => {
     if (
       (window.navigator.userAgent.indexOf('Trident/') >= 0)
-      && (document.cookie.indexOf('IEGirl=true') < 0)
+      && (window.sessionStorage.getItem('IEHammer') !== 'true')
     ) {
       setShowIENoti(true);
     }
   }, []);
   const closeNoti = () => {
     setShowIENoti(false);
-    document.cookie = 'IEGirl=true';
+    window.sessionStorage.setItem('IEHammer', 'true');
   };
 
   return (

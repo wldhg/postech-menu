@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shimmer, Text } from 'office-ui-fabric-react';
+import { Shimmer, Text } from '@fluentui/react';
 import { MealType, MealPlaces, useAPI } from '../../API';
 import useI18n from '../../I18n';
 
@@ -17,19 +17,49 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
   const { t, getLocale } = useI18n(D);
   const { place, type, engTranslationRequired } = props;
 
+  const createMenuTextList = (arr) => (
+    <>
+      {
+        arr.map((m) => {
+          let menuText = m;
+          let isSearchable = true;
+          if (menuText.indexOf('__') === 0) {
+            menuText = menuText.substring(2);
+            isSearchable = false;
+          }
+          return (
+            <p key={`${place}-${type}-i${Math.random()}`}>
+              {
+                (isSearchable) ? (
+                  <Text
+                    variant="medium"
+                    onClick={() => {
+                      window.open(
+                        `https://www.google.com/search?tbm=isch&q=${window.encodeURIComponent(menuText)}`,
+                        '_blank',
+                      ).focus();
+                    }}
+                    title={`${t('눌러서 구글에서 ')}${menuText}${t(' 검색하기')}`}
+                    className={$.buttonlikeMenuItem}
+                  >
+                    {menuText}
+                  </Text>
+                ) : (<Text variant="medium">{menuText}</Text>)
+              }
+            </p>
+          );
+        })
+      }
+    </>
+  );
+
   const menu = getMenu(place, type);
   let menuLists = [<div><p>{t('DOM 생성 중 오류가 발생했습니다.')}</p></div>];
   if (menu) {
     if (menu instanceof Array) {
       menuLists = [
         <div data-list key={`${place}-${type}-${Math.random()}`}>
-          {
-            menu.map((m) => (
-              <p key={`${place}-${type}-i${Math.random()}`}>
-                <Text variant="medium">{m}</Text>
-              </p>
-            ))
-          }
+          { createMenuTextList(menu) }
         </div>,
       ];
     } else {
@@ -50,11 +80,10 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
                     className={$.translate}
                     onClick={() => {
                       const text = `${menuTitles[idx].replace('일반식', '일반 식단')}\n\n${menu[menuTitles[idx]].map((_) => _.trim()).join('\n')}`;
-                      const ntp = window.open(
+                      window.open(
                         `https://translate.google.com/?vi=c#ko/en/${window.encodeURIComponent(text)}`,
                         '_blank',
-                      );
-                      ntp.focus();
+                      ).focus();
                     }}
                   >
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 228.403 228.403">
@@ -64,13 +93,7 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
                 )
               }
             </h4>
-            {
-              menu[menuTitles[idx]].map((m) => (
-                <p key={`${place}-${type}-i${Math.random()}`}>
-                  <Text variant="medium">{m}</Text>
-                </p>
-              ))
-            }
+            { createMenuTextList(menu[menuTitles[idx]]) }
           </div>,
         );
       }
@@ -92,6 +115,10 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
       }
     </div>
   );
+};
+
+MealByPlace.defaultProps = {
+  engTranslationRequired: false,
 };
 
 export default MealByPlace;

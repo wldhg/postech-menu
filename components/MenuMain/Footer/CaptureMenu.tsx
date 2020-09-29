@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   ActionButton, Dialog, DialogType, DialogFooter, PrimaryButton,
   Spinner, SpinnerSize,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 import download from 'downloadjs';
 import moment from 'moment';
 import useI18n from '../../I18n';

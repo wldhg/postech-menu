@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ActionButton } from 'office-ui-fabric-react';
+import React from 'react';
+import { ActionButton } from '@fluentui/react';
 import useI18n from '../../I18n';
 import useTheme from '../../Theme';
 
@@ -10,27 +10,14 @@ const BrightnessMode: React.FC = () => {
   const { setTheme, getTheme, isThemeLocked } = useTheme();
 
   /* Brightness Mode */
-  // Cookie manager
+  // Storage manager
   const setNightBoy = (data?: boolean) => {
     if (typeof data !== 'boolean') {
-      document.cookie = 'NightBoy=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      window.localStorage.removeItem('NightBoy');
     } else {
-      document.cookie = `NightBoy=${data.toString()};expires=${
-        (new Date(Date.now() + 2592000)).toUTCString() // 30 days
-      };`;
+      window.localStorage.setItem('NightBoy', data.toString());
     }
   };
-  useEffect(() => {
-    if (document.cookie.indexOf('NightBoy=true') > -1) {
-      document.cookie = `NightBoy=true;expires=${
-        (new Date(Date.now() + 2592000)).toUTCString() // 30 days
-      };`;
-    } else if (document.cookie.indexOf('NightBoy=false') > -1) {
-      document.cookie = `NightBoy=false;expires=${
-        (new Date(Date.now() + 2592000)).toUTCString() // 30 days
-      };`;
-    }
-  }, []);
   // Button click action for toggle
   const toggleBrightnessMode = () => {
     if (document.documentElement.dataset?.theme === 'dark') {

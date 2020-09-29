@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   ActionButton, Dialog, DialogType, DialogFooter, PrimaryButton,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import $ from './style.scss';
 

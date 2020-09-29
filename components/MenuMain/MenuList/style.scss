@@ -95,6 +95,14 @@
           &:first-child {
             margin-top: 0;
           }
+
+          .buttonlikeMenuItem {
+            cursor: pointer;
+
+            &:hover, &:focus {
+              color: $monet;
+            }
+          }
         }
       }
     }

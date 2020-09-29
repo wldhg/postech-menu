@@ -137,13 +137,13 @@ interface APIResponse {
 };
 
 const ParseFailedMessage: {[key in I18nLocale]: string} = {
-  en: 'Failed to parse the API response.',
-  ko: 'API 응답을 해석할 수 없습니다.',
+  en: '__Failed to parse the API response.',
+  ko: '__API 응답을 해석할 수 없습니다.',
 };
 
 const APIFailedMessage: {[key in I18nLocale]: string} = {
-  en: 'Invalid API request.',
-  ko: 'API 요청이 잘못되었습니다.',
+  en: '__Invalid API request.',
+  ko: '__API 요청이 잘못되었습니다.',
 };
 const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
   en: {

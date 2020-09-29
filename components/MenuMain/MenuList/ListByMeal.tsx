@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'office-ui-fabric-react';
+import { Text } from '@fluentui/react';
 import MealByPlace from './MealByPlace';
 import useI18n from '../../I18n';
 import { MealType } from '../../API';

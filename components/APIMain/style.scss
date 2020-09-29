@@ -1,9 +1,12 @@
 .container {
   margin: calc(1vh + 5% - 20px) auto calc(2vh - 20px);
+  box-sizing: border-box;
+  padding: 30px;
   width: 600px;
+  max-width: 100%;
 
   @include onMobile {
-    width: 390px;
+    width: 100%;
   }
 
   h1 {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'office-ui-fabric-react';
+import { Text } from '@fluentui/react';
 import moment from 'moment';
 import useI18n from '../../I18n';
 

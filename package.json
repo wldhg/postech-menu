@@ -13,13 +13,14 @@
     "upload": "vercel deploy --prod"
   },
   "dependencies": {
+    "@fluentui/react": "^7.142.1",
     "@types/node": "^13.7.1",
     "@types/node-sass": "^4.11.0",
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
-    "@uifabric/icons": "^7.3.22",
+    "@uifabric/icons": "^7.5.8",
     "@zeit/next-sass": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "cheerio": "^1.0.0-rc.3",
@@ -38,7 +39,6 @@
     "moment": "^2.24.0",
     "next": "^9.5.3",
     "node-sass": "^4.13.1",
-    "office-ui-fabric-react": "^7.105.4",
     "react": "^16.13.1",
     "react-app": "^1.1.2",
     "react-dom": "^16.13.1",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Swipeable } from 'react-swipeable';
-import { Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Pivot, PivotItem } from '@fluentui/react';
 import ListByMeal from './ListByMeal';
 import useAPI from '../../API';
 import useI18n from '../../I18n';

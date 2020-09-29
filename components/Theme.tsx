@@ -1,7 +1,7 @@
 import React, {
   createContext, useReducer, useContext, Dispatch,
 } from 'react';
-import { createTheme, Customizations, IRawStyle } from 'office-ui-fabric-react';
+import { createTheme, Customizations, IRawStyle } from '@fluentui/react';
 import { initializeIcons } from '@uifabric/icons';
 
 initializeIcons(undefined, { disableWarnings: true });

@@ -5,14 +5,14 @@ import http from 'http';
 
 const jigokFailed = {
   ko: {
-    breakfast: ['복지회 식단 데이터에 접근할 수 없습니다.'],
-    lunch: ['복지회 식단 데이터에 접근할 수 없습니다.'],
-    dinner: ['복지회 식단 데이터에 접근할 수 없습니다.'],
+    breakfast: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
+    lunch: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
+    dinner: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
   },
   en: {
-    breakfast: ['Failed to access POSTECH food service.'],
-    lunch: ['Failed to access POSTECH food service.'],
-    dinner: ['Failed to access POSTECH food service.'],
+    breakfast: ['__Failed to access POSTECH food service.'],
+    lunch: ['__Failed to access POSTECH food service.'],
+    dinner: ['__Failed to access POSTECH food service.'],
   },
 };
 
@@ -21,14 +21,14 @@ const jigokTimeout = () => {
   jigokTimeoutCount += 1;
   return {
     ko: {
-      breakfast: ['API 처리 시간을 초과하였습니다.'],
-      lunch: ['API 처리 시간을 초과하였습니다.'],
-      dinner: ['API 처리 시간을 초과하였습니다.'],
+      breakfast: ['__API 처리 시간을 초과하였습니다.'],
+      lunch: ['__API 처리 시간을 초과하였습니다.'],
+      dinner: ['__API 처리 시간을 초과하였습니다.'],
     },
     en: {
-      breakfast: ['API processing timed out.'],
-      lunch: ['API processing timed out.'],
-      dinner: ['API processing timed out.'],
+      breakfast: ['__API processing timed out.'],
+      lunch: ['__API processing timed out.'],
+      dinner: ['__API processing timed out.'],
     },
     cnt: jigokTimeoutCount,
   };
@@ -36,14 +36,14 @@ const jigokTimeout = () => {
 
 const jigokNoMenu = {
   ko: {
-    breakfast: ['식사가 없는 날입니다.'],
-    lunch: ['식사가 없는 날입니다.'],
-    dinner: ['식사가 없는 날입니다.'],
+    breakfast: ['__식사가 없는 날입니다.'],
+    lunch: ['__식사가 없는 날입니다.'],
+    dinner: ['__식사가 없는 날입니다.'],
   },
   en: {
-    breakfast: ['There\'re no meals today.'],
-    lunch: ['There\'re no meals today.'],
-    dinner: ['There\'re no meals today.'],
+    breakfast: ['__There\'re no meals today.'],
+    lunch: ['__There\'re no meals today.'],
+    dinner: ['__There\'re no meals today.'],
   },
 };
 

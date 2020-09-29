@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'office-ui-fabric-react';
+import { Icon } from '@fluentui/react';
 import Wrapper from '../Wrapper';
 
 import $ from './style.scss';

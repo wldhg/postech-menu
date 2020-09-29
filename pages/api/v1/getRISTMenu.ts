@@ -4,14 +4,14 @@ import http from 'http';
 
 const ristFailed = {
   ko: {
-    breakfast: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
-    lunch: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
-    dinner: ['신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+    breakfast: ['__신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+    lunch: ['__신세계 푸딩플러스 API에 접근할 수 없습니다.'],
+    dinner: ['__신세계 푸딩플러스 API에 접근할 수 없습니다.'],
   },
   en: {
-    breakfast: ['Failed to access Shinsegae food service.'],
-    lunch: ['Failed to access Shinsegae food service.'],
-    dinner: ['Failed to access Shinsegae food service.'],
+    breakfast: ['__Failed to access Shinsegae food service.'],
+    lunch: ['__Failed to access Shinsegae food service.'],
+    dinner: ['__Failed to access Shinsegae food service.'],
   },
 };
 
@@ -64,14 +64,14 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
           ristParsing = false;
           O.end(JSON.stringify({
             ko: {
-              breakfast: ['API 처리 시간을 초과하였습니다.'],
-              lunch: ['API 처리 시간을 초과하였습니다.'],
-              dinner: ['API 처리 시간을 초과하였습니다.'],
+              breakfast: ['__API 처리 시간을 초과하였습니다.'],
+              lunch: ['__API 처리 시간을 초과하였습니다.'],
+              dinner: ['__API 처리 시간을 초과하였습니다.'],
             },
             en: {
-              breakfast: ['API processing timed out.'],
-              lunch: ['API processing timed out.'],
-              dinner: ['API processing timed out.'],
+              breakfast: ['__API processing timed out.'],
+              lunch: ['__API processing timed out.'],
+              dinner: ['__API processing timed out.'],
             },
           }[locale]));
         }, 6100);
@@ -81,14 +81,14 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
             clearTimeout(timeout);
             ristRet = (lo) => JSON.stringify({
               ko: {
-                breakfast: ['식사가 없는 날입니다.'],
-                lunch: ['식사가 없는 날입니다.'],
-                dinner: ['식사가 없는 날입니다.'],
+                breakfast: ['__식사가 없는 날입니다.'],
+                lunch: ['__식사가 없는 날입니다.'],
+                dinner: ['__식사가 없는 날입니다.'],
               },
               en: {
-                breakfast: ['There\'re no meals today.'],
-                lunch: ['There\'re no meals today.'],
-                dinner: ['There\'re no meals today.'],
+                breakfast: ['__There\'re no meals today.'],
+                lunch: ['__There\'re no meals today.'],
+                dinner: ['__There\'re no meals today.'],
               },
             }[lo]);
             ristDate = moment().format('YYYYMMDD');
@@ -140,8 +140,8 @@ const getRISTMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                   ristDinner.push(...ristMenu.dinner[dk]);
                 });
                 const noMealInfo = {
-                  ko: ['식사 정보가 없습니다.'],
-                  en: ['There\'s no meal information.'],
+                  ko: ['__식사 정보가 없습니다.'],
+                  en: ['__There\'s no meal information.'],
                 };
                 ristRet = (lo) => JSON.stringify({
                   breakfast: ristBreakfast.length > 0 ? ristBreakfast : noMealInfo[lo],
