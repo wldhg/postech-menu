@@ -92,25 +92,29 @@ export const I18nEnabled: React.FC<Props> = ({ children }: Props) => {
   );
 };
 
+type LocaleFormatDict = {
+  [key in I18nLocale]: FormatDict;
+};
+
 export const useI18n = (dict: object) => {
   const state = useContext(LocaleContext);
   const dispatch = useContext(LocaleDispatchContext);
 
   // Translator
-  const t = (item: string, adaptiveDict?: FormatDict): string => {
+  const t = (item: string, adaptiveDict?: LocaleFormatDict): string => {
     let translated = item;
     if (dict !== null && Object.prototype.hasOwnProperty.call(dict, state.locale)) {
       if (Object.prototype.hasOwnProperty.call(dict[state.locale], item)) {
         translated = dict[state.locale][item];
-        if (adaptiveDict) {
-          translated = format(translated, adaptiveDict);
+        if (adaptiveDict && adaptiveDict[state.locale]) {
+          translated = format(translated, adaptiveDict[state.locale]);
         }
       } else {
         /* eslint-disable no-console */
         console.warn(`No appropriate translation for "${item}"!`);
       }
-    } else if (adaptiveDict) {
-      translated = format(translated, adaptiveDict);
+    } else if (adaptiveDict && adaptiveDict[state.locale]) {
+      translated = format(translated, adaptiveDict[state.locale]);
     }
     return translated;
   };
