@@ -2,6 +2,61 @@ import React, {
   createContext, useReducer, useContext, Dispatch,
 } from 'react';
 
+/**
+ ******************************
+ * String Formatter (Utility) *
+ ******************************
+ */
+
+type FormatDictObject = {
+  [key: string]: string;
+}
+type FormatDictArray = string[];
+type FormatDict = FormatDictObject | FormatDictArray;
+
+/* eslint-disable no-else-return */
+const format = (message: string, dict: FormatDict, depth = 0): string => {
+  const replaces = message.match(/\[\[[0-9a-zA-Z_:.]*\]\]/gm);
+  let replacedCounter = 0;
+  let replacedMessage = String(message);
+
+  if (replaces) {
+    for (let i = 0; i < replaces.length; i += 1) {
+      if (replaces[i] === '[[]]') {
+        replacedMessage = replacedMessage.replace(
+          replaces[i],
+          dict[replacedCounter],
+        );
+        replacedCounter += 1;
+      } else {
+        const reqArgLabel = replaces[i].substring(2, replaces[i].length - 2);
+        const reqArgNo = Number(reqArgLabel);
+        const reqArg = Number.isNaN(reqArgNo) ? reqArgLabel : reqArgNo;
+
+        if (typeof dict[reqArg] !== 'undefined') {
+          replacedMessage = replacedMessage.replace(
+            replaces[i],
+            dict[reqArg],
+          );
+        }
+      }
+    }
+    if (depth > 10) {
+      return replacedMessage;
+    } else {
+      return format(replacedMessage, dict, depth + 1);
+    }
+  } else {
+    return replacedMessage;
+  }
+};
+
+/**
+ ******************************
+ * I18n React Hook Definition *
+ ******************************
+ */
+
 export type I18nLocale = 'ko' | 'en';
 interface I18nStruct {
   locale: I18nLocale
@@ -37,26 +92,33 @@ export const I18nEnabled: React.FC<Props> = ({ children }: Props) => {
   );
 };
 
-export const useI18n = (dict) => {
+export const useI18n = (dict: object) => {
   const state = useContext(LocaleContext);
   const dispatch = useContext(LocaleDispatchContext);
 
   // Translator
-  const t = (item: string): string => {
+  const t = (item: string, adaptiveDict?: FormatDict): string => {
     let translated = item;
-    if (dict[state.locale]) {
-      if (dict[state.locale][item]) {
+    if (dict !== null && Object.prototype.hasOwnProperty.call(dict, state.locale)) {
+      if (Object.prototype.hasOwnProperty.call(dict[state.locale], item)) {
         translated = dict[state.locale][item];
+        if (adaptiveDict) {
+          translated = format(translated, adaptiveDict);
+        }
       } else {
         /* eslint-disable no-console */
         console.warn(`No appropriate translation for "${item}"!`);
       }
+    } else if (adaptiveDict) {
+      translated = format(translated, adaptiveDict);
     }
     return translated;
   };
 
   // Locale Setter
   const setLocale = (locale: I18nLocale): void => {
+    document.documentElement.lang = locale;
+
     dispatch({
       type: 'SET_LOCALE',
       locale,
@@ -66,7 +128,28 @@ export const useI18n = (dict) => {
   // Locale Getter
   const getLocale = (): I18nLocale => state.locale;
 
-  return { t, setLocale, getLocale };
+  // Locale Toggler
+  const toggleLocale = (withBlurring = true): void => {
+    const newLocale = getLocale() === 'en' ? 'ko' : 'en';
+    const beKorean = newLocale === 'ko';
+    const isBrowserKo = navigator.language.indexOf('ko') > -1;
+
+    if (isBrowserKo === beKorean) {
+      window.localStorage.removeItem('ssualassuala');
+    } else {
+      window.localStorage.setItem('ssualassuala', newLocale);
+    }
+
+    setLocale(newLocale);
+
+    if (withBlurring) {
+      (document.activeElement as HTMLElement).blur();
+    }
+  };
+
+  return {
+    t, setLocale, getLocale, toggleLocale,
+  };
 };
 
 export default useI18n;
