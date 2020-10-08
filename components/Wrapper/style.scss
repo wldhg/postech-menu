@@ -1,4 +1,6 @@
 html {
+  --ac-color: #{$accent};
+
   &[data-theme="dark"] {
     --bg-color: #{$black};
     --fg-color: #{$white};
@@ -35,7 +37,7 @@ body {
 }
 
 ::selection {
-  background-color: $monet;
+  background-color: $accent;
   color: $white;
 }
 

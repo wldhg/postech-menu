@@ -1,0 +1,18 @@
+'20201008.0':
+  - icon: Health
+    content: Breathe life into the change logs.
+    type: New Feature
+  - icon: Search
+    type: New Feature
+    content: Some menu names will be converted to another search-friendly name when searching Google images.
+    details:
+      - 'Note: only for Korean search results'
+  - icon: Search
+    type: Feature Enhancement
+    content: Append doublequotes when searching Google images.
+  - icon: TestExploreSolid
+    type: Now Testing
+    content: Menu capturing sometimes have grey background. I've tried to fix it and now in evaluation.
+  - icon: Code
+    type: Invisible Changes
+    content: 'Refactor: project structure reorganized.'

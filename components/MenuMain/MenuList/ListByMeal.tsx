@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from '@fluentui/react';
+import { MealType } from 'hooks/api';
+import useI18n from 'hooks/i18n';
 import MealByPlace from './MealByPlace';
-import useI18n from '../../I18n';
-import { MealType } from '../../API';
 
 import $ from './style.scss';
 import D from './en.d.yml';

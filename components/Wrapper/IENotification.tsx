@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   MessageBar, MessageBarType,
 } from '@fluentui/react';
-import useI18n from '../I18n';
+import useI18n from 'hooks/i18n';
 
 import D from './en.d.yml';
 

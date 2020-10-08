@@ -11,6 +11,12 @@
     "allowJs": true,
     "sourceMap": true,
     "baseUrl": "./",
+    "paths": {
+      "*": [
+        "*",
+        "components/*"
+      ]
+    },
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true,
     "skipLibCheck": true,
@@ -22,9 +28,10 @@
     "isolatedModules": true
   },
   "include": [
-    "./components/**/*",
-    "./pages/**/*",
-    "loader.d.ts"
+    "next-dnv.d.ts",
+    "extensions.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules"

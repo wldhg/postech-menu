@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActionButton } from '@fluentui/react';
-import useI18n from '../../I18n';
-import useAPI from '../../API';
+import useI18n from 'hooks/i18n';
+import useAPI from 'hooks/api';
 
 import D from './en.d.yml';
 

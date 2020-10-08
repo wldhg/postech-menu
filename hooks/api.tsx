@@ -1,7 +1,7 @@
 import React, {
   createContext, useReducer, useContext, Dispatch,
 } from 'react';
-import { I18nLocale } from './I18n';
+import { I18nLocale } from './i18n';
 
 export type MealType = 'breakfast' | 'lunch' | 'dinner';
 interface MealMultiMenu {
@@ -145,6 +145,8 @@ const APIFailedMessage: {[key in I18nLocale]: string} = {
   en: '__Invalid API request.',
   ko: '__API 요청이 잘못되었습니다.',
 };
+
+// eslint-disable-next-line no-shadow
 const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
   en: {
     breakfast: [APIFailedMessage.en],

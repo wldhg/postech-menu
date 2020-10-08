@@ -1,5 +1,6 @@
-POSTECH Menu <img src="./public/images/buzz_fly.gif" height="22" />
-=======================================================================
+<img src="./resources/header.svg" />
+
+---
 
 POSTECH Cafeteria Menu Viewer. Now in service: [menu.laffey.kr](https://menu.laffey.kr/).
 

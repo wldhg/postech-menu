@@ -3,7 +3,7 @@
     margin-top: 0;
   }
   a {
-    color: $monet;
+    color: $accent;
   }
 }
 
@@ -52,4 +52,23 @@ footer {
       opacity: 1;
     }
   }
+}
+
+.clDetail {
+  padding: 6px 10px 3px 50px;
+  color: white;
+}
+
+.clVersionTitle {
+  &, * {
+    &, &:hover, &:focus, &:active {
+      font-weight: 700;
+      color: var(--fg-color) !important;
+      user-select: none;
+    }
+  }
+}
+
+.clSeeMore {
+  margin-top: 10px;
 }

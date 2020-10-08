@@ -2,12 +2,12 @@ import React from 'react';
 import {
   ActionButton, Text,
 } from '@fluentui/react';
+import useI18n from 'hooks/i18n';
 import BrightnessMode from './BrightnessMode';
 import CaptureMenu from './CaptureMenu';
 import ChangeLog from './ChangeLog';
 import DispLocale from './DispLocale';
 import ThirdPartyLicense from './3rdPartyLicense';
-import useI18n from '../../I18n';
 
 import $ from './style.scss';
 import D from './en.d.yml';

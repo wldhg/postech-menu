@@ -14,7 +14,15 @@
     "node": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, {"extensions": [".jsx", ".tsx"]}],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
     "react/no-danger": "off",
     "import/extensions": "off",
     "no-extra-semi": "off"
@@ -22,7 +30,15 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [
+          ".js",
+          ".ts",
+          ".tsx"
+        ],
+        "paths": [
+          ".",
+          "./components"
+        ]
       }
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shimmer, Text } from '@fluentui/react';
-import { MealType, MealPlaces, useAPI } from '../../API';
-import useI18n from '../../I18n';
+import { MealType, MealPlaces, useAPI } from 'hooks/api';
+import useI18n from 'hooks/i18n';
 
 import $ from './style.scss';
 import D from './en.d.yml';
@@ -35,7 +35,7 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
                     variant="medium"
                     onClick={() => {
                       window.open(
-                        `https://www.google.com/search?tbm=isch&q=${window.encodeURIComponent(menuText)}`,
+                        `https://www.google.com/search?tbm=isch&q="${window.encodeURIComponent(menuText)}"`,
                         '_blank',
                       ).focus();
                     }}

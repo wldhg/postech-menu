@@ -20,3 +20,8 @@ declare module '*.d.yaml' {
   };
   export default content;
 }
+
+declare module '*changes.yml' {
+  const content: object;
+  export default content;
+}

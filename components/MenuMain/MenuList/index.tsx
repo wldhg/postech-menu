@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Swipeable } from 'react-swipeable';
 import { Pivot, PivotItem } from '@fluentui/react';
+import useAPI from 'hooks/api';
+import useI18n from 'hooks/i18n';
 import ListByMeal from './ListByMeal';
-import useAPI from '../../API';
-import useI18n from '../../I18n';
 
 import $ from './style.scss';
 import D from './en.d.yml';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from '@fluentui/react';
 import moment from 'moment';
-import useI18n from '../../I18n';
+import useI18n from 'hooks/i18n';
 
 import $ from './style.scss';
 import D from './en.d.yml';

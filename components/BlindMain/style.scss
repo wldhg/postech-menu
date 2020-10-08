@@ -11,11 +11,11 @@
 
   h1 {
     font-size: 6rem;
-    color: $monet;
+    color: $accent;
     margin: 0;
 
     i {
-      color: $monet !important;
+      color: $accent !important;
     }
   }
 
@@ -26,5 +26,14 @@
 
   p {
     padding-left: 3px;
+    margin-bottom: 30px;
+  }
+
+  .clicker {
+    cursor: pointer;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
   }
 }

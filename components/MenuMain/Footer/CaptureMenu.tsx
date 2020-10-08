@@ -5,8 +5,8 @@ import {
 } from '@fluentui/react';
 import download from 'downloadjs';
 import moment from 'moment';
-import useI18n from '../../I18n';
-import useTheme from '../../Theme';
+import useI18n from 'hooks/i18n';
+import useTheme from 'hooks/theme';
 
 import $ from './style.scss';
 import D from './en.d.yml';
@@ -34,28 +34,37 @@ const CaptureMenu: React.FC = () => {
       import('html2canvas').then((h2c) => {
         setTheme('light');
         lockTheme();
-        h2c.default(document.querySelector('main'), {
-          backgroundColor: '#fefefe',
-        }).then((canvas) => {
-          const dateString = moment().format('YYYYMMDD');
-          const selectedMealButton: HTMLButtonElement = document.querySelector(
-            '.ms-Pivot-link.is-selected',
-          );
-          const selectedMealType = selectedMealButton.dataset.content;
-          download(
-            canvas.toDataURL('image/png'),
-            `${t('교내식단')}-${dateString}-${selectedMealType}.png`,
-            'image/png',
-          );
-          setIsCapturing(false);
-          setTheme(prevTheme);
-          unlockTheme();
-        }).catch((err) => {
-          setHideDialog(false);
-          setTheme(prevTheme);
-          unlockTheme();
-          console.error(err);
-        });
+        setTimeout(() => {
+          h2c.default(document.querySelector('main'), {
+            backgroundColor: '#ffffff',
+            allowTaint: true,
+          });
+          h2c.default(document.querySelector('main'), {
+            backgroundColor: '#ffffff',
+            allowTaint: true,
+          }).then((canvas) => {
+            const dateString = moment().format('YYYYMMDD');
+            const selectedMealButton: HTMLButtonElement = document.querySelector(
+              '.ms-Pivot-link.is-selected',
+            );
+            const selectedMealType = selectedMealButton.dataset.content;
+            download(
+              canvas.toDataURL('image/png'),
+              `${t('교내식단')}-${dateString}-${selectedMealType}.png`,
+              'image/png',
+            );
+            setTimeout(() => {
+              setIsCapturing(false);
+              setTheme(prevTheme);
+              unlockTheme();
+            }, 100);
+          }).catch((err) => {
+            setHideDialog(false);
+            setTheme(prevTheme);
+            unlockTheme();
+            console.error(err);
+          });
+        }, 400);
       }).catch((err) => {
         setHideDialog(false);
         setTheme(prevTheme);

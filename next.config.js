@@ -4,11 +4,11 @@ module.exports = SassWrapper({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: true,
-    localIdentName: '[sha512:hash:base62:6]',
+    localIdentName: '[sha512:hash:base62:4]',
   },
   sassLoaderOptions: {
     data: `
-      @import "common.scss";
+      @import "styles/common.scss";
     `,
   },
   webpack(config, options) {

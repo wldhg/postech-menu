@@ -1,7 +1,7 @@
 import React from 'react';
-import { I18nEnabled } from '../I18n';
-import { APIEnabled } from '../API';
-import { ThemeEnabled } from '../Theme';
+import { I18nEnabled } from 'hooks/i18n';
+import { APIEnabled } from 'hooks/api';
+import { ThemeEnabled } from 'hooks/theme';
 import { Content, Props } from './Content';
 
 /* eslint-disable react/jsx-props-no-spreading */

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import useTheme from 'hooks/theme';
+import useI18n from 'hooks/i18n';
 import IENotification from './IENotification';
-import useTheme from '../Theme';
-import useI18n from '../I18n';
 
 import $ from './style.scss';
 import D from './en.d.yml';
@@ -30,8 +30,8 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
 
   // Determine meta information
   const realTitle = main ? t('오늘의 교내 식단') : `${title} - ${t('오늘의 교내 식단')}`;
-  const metaDescription = description || t('당신의 꿀벌은 밥을 잘 먹습니까?');
-  const metaImage = image || '/images/buzz_fly.gif';
+  const metaDescription = description || t('오늘의 포스텍 교내 식단을 확인해보세요.');
+  const metaImage = image || '/banner.png';
 
   // Display Mode
   const dispModeInit = `
@@ -84,7 +84,7 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
 
         {/* Meta Tags */}
         <meta name="theme-color" content="#6666cc" />
-        <meta name="robots" content="noimageindex" />
+        { main || <meta name="robots" content="none" /> }
         <meta name="description" content={metaDescription} />
         <meta name="viewport" content="width=390, user-scalable=no" />
         <meta property="og:title" content={realTitle} />
@@ -93,7 +93,7 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
         <title>{realTitle}</title>
 
         {/* Styles */}
-        <link href="favicon.ico" rel="shortcut icon" />
+        <link href="/favicon.ico" rel="shortcut icon" />
         <link
           href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean"
           rel="stylesheet"
