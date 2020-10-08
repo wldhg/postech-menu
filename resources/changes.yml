@@ -16,3 +16,7 @@
   - icon: Code
     type: Invisible Changes
     content: 'Refactor: project structure reorganized.'
+'20201008.1':
+  - icon: HeartFill
+    type: Invisible Changes
+    content: 'Renamed the branch name to ''main''.'
