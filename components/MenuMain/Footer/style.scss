@@ -1,4 +1,4 @@
-.oslDialog {
+.oslDialog, .clDialog {
   p:first-of-type {
     margin-top: 0;
   }
@@ -36,9 +36,20 @@ footer {
     }
 
     &.version {
-      opacity: .5;
       margin-top: 5px;
       user-select: none;
+
+      span {
+        opacity: .5;
+      }
+    }
+  }
+
+  .footerButtonlikeAnchor {
+    cursor: pointer;
+
+    &:focus, &:hover {
+      opacity: 1;
     }
   }
 }

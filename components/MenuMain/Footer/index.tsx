@@ -4,6 +4,7 @@ import {
 } from '@fluentui/react';
 import BrightnessMode from './BrightnessMode';
 import CaptureMenu from './CaptureMenu';
+import ChangeLog from './ChangeLog';
 import DispLocale from './DispLocale';
 import ThirdPartyLicense from './3rdPartyLicense';
 import useI18n from '../../I18n';
@@ -66,7 +67,7 @@ const Footer: React.FC = () => {
         </Text>
       </p>
       <p className={$.version}>
-        <Text variant="smallPlus">{process.env.NEXT_PUBLIC_ENDPOINT_VERSION}</Text>
+        <ChangeLog />
       </p>
     </footer>
   );
