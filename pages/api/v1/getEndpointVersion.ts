@@ -1,12 +1,11 @@
 import http from 'http';
 import clItem from 'resources/changes.yml';
 
-const versions = Object.keys(clItem).sort();
-const currentVersion = versions[versions.length - 1];
+const currentVersion = Object.keys(clItem).sort().reverse()[0];
 
 const getEndpointVersion = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   O.setHeader('Content-Type', 'application/json; charset=utf-8');
-  O.end(JSON.stringify({ currentVersion }));
+  O.end(JSON.stringify({ version: currentVersion }));
 };
 
 export default getEndpointVersion;
