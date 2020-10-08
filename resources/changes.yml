@@ -1,3 +1,4 @@
+# Refer https://developer.microsoft.com/en-us/fluentui#/styles/web/icons for icon names
 '20201008.0':
   - icon: Health
     content: Breathe life into the change logs.
@@ -20,3 +21,7 @@
   - icon: HeartFill
     type: Invisible Changes
     content: 'Renamed the branch name to ''main''.'
+'20201009.0':
+  - icon: NewAnalyticsQuery
+    type: Stability Enhancement
+    content: API server 'Momo' have stepped down and succeeded by more stable server, 'Revue'.
