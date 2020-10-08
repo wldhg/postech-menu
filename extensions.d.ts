@@ -25,3 +25,8 @@ declare module '*changes.yml' {
   const content: object;
   export default content;
 }
+
+declare module '*searchfilter.yml' {
+  const content: object;
+  export default content;
+}

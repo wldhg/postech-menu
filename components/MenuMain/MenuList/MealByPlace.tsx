@@ -3,6 +3,8 @@ import { Shimmer, Text } from '@fluentui/react';
 import { MealType, MealPlaces, useAPI } from 'hooks/api';
 import useI18n from 'hooks/i18n';
 
+import F from 'resources/searchfilter.yml';
+
 import $ from './style.scss';
 import D from './en.d.yml';
 
@@ -22,10 +24,13 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
       {
         arr.map((m) => {
           let menuText = m;
+          let searchText = m;
           let isSearchable = true;
           if (menuText.indexOf('__') === 0) {
             menuText = menuText.substring(2);
             isSearchable = false;
+          } else if (Object.prototype.hasOwnProperty.call(F, searchText)) {
+            searchText = F[searchText];
           }
           return (
             <p key={`${place}-${type}-i${Math.random()}`}>
@@ -35,7 +40,7 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
                     variant="medium"
                     onClick={() => {
                       window.open(
-                        `https://www.google.com/search?tbm=isch&q="${window.encodeURIComponent(menuText)}"`,
+                        `https://www.google.com/search?tbm=isch&q="${window.encodeURIComponent(searchText)}"`,
                         '_blank',
                       ).focus();
                     }}

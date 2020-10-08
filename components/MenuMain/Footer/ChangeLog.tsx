@@ -53,8 +53,6 @@ const ChangeLog: React.FC = () => {
     ) : null
   );
 
-  // TODO 브베계란볶음 같은거 인한스먼트필터 만들어서 변형 검색하도록 하고
-
   // Change Log Items
   const clKeys = Object.keys(clItem).sort().reverse();
   const clValues = clKeys.map((key) => clItem[key]);
