@@ -74,6 +74,12 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
     }
   }, [/* Run Only Once */]);
 
+  // Keywords
+  const metaKeywords = [
+    '학식', 'RIST식당', '리스트식당', '리스트', '포항공대', '공대', '포스텍', 'RIST', 'POSTECH',
+    'Student Cafeteria', 'Cafeteria', 'Menu', 'Campus Menu',
+  ].join(', ');
+
   // Render
   return (
     <>
@@ -86,6 +92,7 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
         <meta name="theme-color" content="#6666cc" />
         { main || <meta name="robots" content="none" /> }
         <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={metaKeywords} />
         <meta name="viewport" content="width=390, user-scalable=no" />
         <meta property="og:title" content={realTitle} />
         <meta property="og:image" content={metaImage} />
