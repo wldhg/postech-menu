@@ -25,3 +25,12 @@
   - icon: NewAnalyticsQuery
     type: Stability Enhancement
     content: API server 'Momo' have stepped down and succeeded by more stable server, 'Revue'.
+'20201014.0':
+  - icon: ClipboardSolid
+    type: New Feature
+    content: Meet new 'copy text' feature.
+  - icon: Repair
+    type: Now Testing
+    content: Updated capture logic.
+    details:
+      - From now, capture theme is not fixed to white.
