@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Swipeable } from 'react-swipeable';
 import { Pivot, PivotItem } from '@fluentui/react';
+import HiddenText from 'components/Controls/HiddenText';
 import useAPI from 'hooks/api';
 import useI18n from 'hooks/i18n';
 import ListByMeal from './ListByMeal';
@@ -67,17 +68,21 @@ const MenuList: React.FC = () => {
   return (
     <Swipeable onSwipedLeft={leftSwipe} onSwipedRight={rightSwipe}>
       <Pivot
+        id="pivot"
         className={$.menuContainer}
         selectedKey={showWhat}
         onLinkClick={onDispChange}
       >
         <PivotItem headerText={t('아침')} itemKey="breakfast">
+          <HiddenText upperPad={1} lowerPad={2}>{`* ${t('아침')} *`}</HiddenText>
           <ListByMeal type="breakfast" />
         </PivotItem>
         <PivotItem headerText={t('점심')} itemKey="lunch">
+          <HiddenText upperPad={1} lowerPad={2}>{`* ${t('점심')} *`}</HiddenText>
           <ListByMeal type="lunch" />
         </PivotItem>
         <PivotItem headerText={t('저녁')} itemKey="dinner">
+          <HiddenText upperPad={1} lowerPad={2}>{`* ${t('저녁')} *`}</HiddenText>
           <ListByMeal type="dinner" />
         </PivotItem>
       </Pivot>

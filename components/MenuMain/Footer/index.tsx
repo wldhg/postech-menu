@@ -2,9 +2,11 @@ import React from 'react';
 import {
   ActionButton, Text,
 } from '@fluentui/react';
+import HiddenText from 'components/Controls/HiddenText';
 import useI18n from 'hooks/i18n';
 import BrightnessMode from './BrightnessMode';
 import CaptureMenu from './CaptureMenu';
+import CopyText from './CopyText';
 import ChangeLog from './ChangeLog';
 import DispLocale from './DispLocale';
 import ThirdPartyLicense from './3rdPartyLicense';
@@ -37,6 +39,7 @@ const Footer: React.FC = () => {
       <div>
         <DispLocale />
         <CaptureMenu />
+        <CopyText />
         <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
           {t('배달 음식')}
         </ActionButton>
@@ -51,8 +54,9 @@ const Footer: React.FC = () => {
           )
         }
       </div>
-      <p>
-        <Text variant="smallPlus">{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
+      <HiddenText lowerPad={2}>---</HiddenText>
+      <p className={$.notSelectable}>
+        <Text variant="smallPlus" className={$.selectable}>{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}

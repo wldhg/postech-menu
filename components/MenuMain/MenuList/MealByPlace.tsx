@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shimmer, Text } from '@fluentui/react';
+import HiddenText from 'components/Controls/HiddenText';
 import { MealType, MealPlaces, useAPI } from 'hooks/api';
 import useI18n from 'hooks/i18n';
 
@@ -74,6 +75,7 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
         menuLists.push(
           <div data-list key={`${place}-${type}-${Math.random()}`}>
             <h4>
+              <HiddenText>###&nbsp;</HiddenText>
               <Text variant="medium" className={$.subTitle}>
                 {menuTitles[idx]}
               </Text>

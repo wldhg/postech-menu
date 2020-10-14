@@ -10,7 +10,8 @@
     "local-dev-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next dev",
     "local": "set NEXT_PUBLIC_OPERATION_MODE=api&& next build&& next start",
     "local-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next build&& next start",
-    "upload": "vercel deploy --prod"
+    "upload": "vercel deploy --prod",
+    "upload-dev": "vercel deploy"
   },
   "engines": {
     "npm": "USE YARN INSTEAD OF NPM"

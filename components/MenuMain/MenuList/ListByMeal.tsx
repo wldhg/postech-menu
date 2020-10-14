@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text } from '@fluentui/react';
+import HiddenText from 'components/Controls/HiddenText';
 import { MealType } from 'hooks/api';
 import useI18n from 'hooks/i18n';
 import MealByPlace from './MealByPlace';
@@ -20,6 +21,7 @@ const ListByMeal: React.FC<Props> = (props: Props) => {
       <div>
         <h3>
           <Text variant="mediumPlus" className={$.title}>
+            <HiddenText>##&nbsp;</HiddenText>
             {t('학생 식당')}
           </Text>
         </h3>
@@ -28,6 +30,7 @@ const ListByMeal: React.FC<Props> = (props: Props) => {
       <div>
         <h3>
           <Text variant="mediumPlus" className={$.title}>
+            <HiddenText>##&nbsp;</HiddenText>
             {t('RIST 식당')}
           </Text>
         </h3>

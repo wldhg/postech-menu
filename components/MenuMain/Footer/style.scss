@@ -10,6 +10,7 @@
 footer {
   padding: 20px;
   font-size: 0.8rem;
+  position: relative;
 
   .actionSpinner {
     margin-left: 3px;
@@ -52,6 +53,14 @@ footer {
       opacity: 1;
     }
   }
+
+  .notSelectable {
+    user-select: none;
+  }
+
+  .selectable {
+    user-select: initial;
+  }
 }
 
 .clDetail {
@@ -71,4 +80,14 @@ footer {
 
 .clSeeMore {
   margin-top: 10px;
+}
+
+.hiddenCopyArea {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -10;
+  width: 0;
+  height: 0;
+  visibility: hidden;
 }
