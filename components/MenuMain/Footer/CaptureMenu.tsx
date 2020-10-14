@@ -14,9 +14,7 @@ import D from './en.d.yml';
 /* eslint-disable no-console */
 const CaptureMenu: React.FC = () => {
   const { t } = useI18n(D);
-  const {
-    setTheme, lockTheme, unlockTheme, getTheme,
-  } = useTheme();
+  const { getTheme } = useTheme();
   const [hideDialog, setHideDialog] = useState(true);
   const [isCapturing, setIsCapturing] = useState(false);
 
@@ -30,17 +28,12 @@ const CaptureMenu: React.FC = () => {
   const captureMenu = () => {
     setIsCapturing(true);
     if (document && window) {
-      const prevTheme = getTheme();
       import('html2canvas').then((h2c) => {
-        setTheme('light');
-        lockTheme();
-        setTimeout(() => {
+        const doSecondaryTry = () => {
           h2c.default(document.querySelector('main'), {
-            backgroundColor: '#ffffff',
-            allowTaint: true,
-          });
-          h2c.default(document.querySelector('main'), {
-            backgroundColor: '#ffffff',
+            backgroundColor: getTheme() === 'light' ? '#ffffff' : '#1a1918',
+            canvas: null,
+            cache: null,
             allowTaint: true,
           }).then((canvas) => {
             const dateString = moment().format('YYYYMMDD');
@@ -55,20 +48,15 @@ const CaptureMenu: React.FC = () => {
             );
             setTimeout(() => {
               setIsCapturing(false);
-              setTheme(prevTheme);
-              unlockTheme();
             }, 100);
           }).catch((err) => {
             setHideDialog(false);
-            setTheme(prevTheme);
-            unlockTheme();
             console.error(err);
           });
-        }, 400);
+        };
+        doSecondaryTry();
       }).catch((err) => {
         setHideDialog(false);
-        setTheme(prevTheme);
-        unlockTheme();
         console.error(err);
       });
     } else {

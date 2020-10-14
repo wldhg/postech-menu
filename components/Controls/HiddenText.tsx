@@ -16,10 +16,10 @@ const HiddenText: React.FC<Props> = (props: Props) => {
   const lowerBRs = [];
 
   for (let i = 0; i < upperPad; i += 1) {
-    upperBRs.push(<br />);
+    upperBRs.push(<br key={`${Math.random()}-a${i}`} />);
   }
   for (let i = 0; i < lowerPad; i += 1) {
-    lowerBRs.push(<br />);
+    lowerBRs.push(<br key={`${Math.random()}-b${i}`} />);
   }
 
   return (

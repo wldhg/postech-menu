@@ -25,7 +25,7 @@ html {
 
   &.loaded {
     &, main {
-      transition: background-color .4s ease-in-out, color .4s ease-in-out;
+      transition: background-color .4s ease-in-out;
     }
   }
 }
