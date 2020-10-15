@@ -30,6 +30,10 @@ const BlindMain: React.FC<Props> = (props: Props) => {
     '404': 'The URL you\'ve entered is not found.',
   };
 
+  if (process.env.NEXT_PUBLIC_DISABLE_SELF_API === 'true') {
+    description.api = 'API endpoint is in operation, but its funcationality is disabled.';
+  }
+
   const goFront = () => {
     window.location.replace('/');
   };
@@ -39,7 +43,15 @@ const BlindMain: React.FC<Props> = (props: Props) => {
       title={title[type]}
       className={$.container}
     >
-      <h1><Icon iconName={icon[type]} /></h1>
+      <h1
+        className={
+          type === 'api' && process.env.NEXT_PUBLIC_DISABLE_SELF_API === 'true'
+            ? $.apiDisabled
+            : null
+        }
+      >
+        <Icon iconName={icon[type]} />
+      </h1>
       <h2>{description[type]}</h2>
       {
         type === '404' && (

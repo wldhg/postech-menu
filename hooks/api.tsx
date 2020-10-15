@@ -165,8 +165,11 @@ const APIServers = [
   'https://bb.menu.laffey.kr/api',
   'https://rn.menu.laffey.kr:9098/api',
   'https://rv.menu.laffey.kr/api',
-  '/api',
 ];
+
+if (process.env.NEXT_PUBLIC_DISABLE_SELF_API !== 'true') {
+  APIServers.push('/api');
+}
 
 const parallelizeMenu = (menu: string[], locale: I18nLocale): MealMenu => {
   let cache: MealMenu = [];

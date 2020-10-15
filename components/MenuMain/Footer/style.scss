@@ -66,9 +66,21 @@ footer {
 .clDetail {
   padding: 6px 10px 3px 50px;
   color: white;
+
+  &:last-child {
+    padding-bottom: 9px;
+  }
+}
+
+.groupListContainer {
+  button {
+    cursor: pointer;
+  }
 }
 
 .clVersionTitle {
+  margin-left: 5px;
+
   &, * {
     &, &:hover, &:focus, &:active {
       font-weight: 700;

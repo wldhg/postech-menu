@@ -32,7 +32,14 @@ const ChangeLog: React.FC = () => {
         const content = isPlain ? i : i.content;
         const icon = isPlain ? null : (<Icon iconName={i.icon} />);
         const type = isPlain ? null : i.type;
-        const timestamp = isPlain ? null : i.details;
+        let timestamp = isPlain ? null : i.details;
+        if (i.details instanceof Array) {
+          timestamp = [i.details[0]];
+          for (let k = 1; k < i.details.length; k += 1) {
+            timestamp.push(<br />);
+            timestamp.push(i.details[k]);
+          }
+        }
         return (
           <ActivityItem
             className={$.clDetail}
@@ -98,6 +105,7 @@ const ChangeLog: React.FC = () => {
           groups={seeMore ? clGroupsExtended : clGroupsCompact}
           onRenderCell={renderCell}
           selectionMode={SelectionMode.none}
+          className={$.groupListContainer}
           groupProps={{
             collapseAllVisibility: CollapseAllVisibility.hidden,
             headerProps: {

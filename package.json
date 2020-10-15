@@ -6,12 +6,12 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "local-dev": "set NEXT_PUBLIC_OPERATION_MODE=api&& next dev",
-    "local-dev-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next dev",
-    "local": "set NEXT_PUBLIC_OPERATION_MODE=api&& next build&& next start",
-    "local-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next build&& next start",
-    "upload": "vercel deploy --prod",
-    "upload-dev": "vercel deploy"
+    "test": "set NEXT_PUBLIC_OPERATION_MODE=api&& next dev",
+    "test-noapi": "set NEXT_PUBLIC_OPERATION_MODE=api&& set NEXT_PUBLIC_DISABLE_SELF_API=true&& next dev",
+    "test-ui": "set NEXT_PUBLIC_OPERATION_MODE=ui&& next dev",
+    "test-ui-noapi": "set NEXT_PUBLIC_OPERATION_MODE=ui&& set NEXT_PUBLIC_DISABLE_SELF_API=true&& next dev",
+    "deploy-prod": "vercel deploy --prod",
+    "deploy": "vercel deploy"
   },
   "engines": {
     "npm": "USE YARN INSTEAD OF NPM"

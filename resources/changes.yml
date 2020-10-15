@@ -34,3 +34,11 @@
     content: Updated capture logic.
     details:
       - From now, capture theme is not fixed to white.
+'20201015.0':
+  - icon: AzureAPIManagement
+    type: Invisible Changes
+    content: The way API system working is changed.
+    details:
+      - PO-menu frontend will not provide or fetch API data from the server itself anymore.
+      - From the past, frontend server could not be abled to provide a full API functionality due to its physical location.
+      - So from this update, frontend server will only provide frontend user interface functionality.

@@ -14,6 +14,10 @@
     color: $accent;
     margin: 0;
 
+    &.apiDisabled i {
+      color: crimson !important;
+    }
+
     i {
       color: $accent !important;
     }
@@ -22,6 +26,7 @@
   h2 {
     margin: 0;
     padding-left: 3px;
+    margin-bottom: 30px;
   }
 
   p {
