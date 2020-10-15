@@ -161,10 +161,8 @@ const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
 };
 
 const APIServers = [
-  'https://ant.menu.laffey.kr/api',
   'https://bb.menu.laffey.kr/api',
-  'https://rn.menu.laffey.kr:9098/api',
-  'https://rv.menu.laffey.kr/api',
+  'https://ws.menu.laffey.kr/api',
 ];
 
 if (process.env.NEXT_PUBLIC_DISABLE_SELF_API !== 'true') {
