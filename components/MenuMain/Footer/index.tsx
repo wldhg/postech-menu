@@ -43,15 +43,10 @@ const Footer: React.FC = () => {
         <TooltipHost
           content={t('Polivery 이용이 불안정할 수 있습니다. (Polivery 측 문제입니다.)')}
           calloutProps={{
-            gapSpace: 1,
-          }}
-          styles={{
-            root: {
-              display: 'inline-block',
-            },
+            gapSpace: 0,
           }}
           delay={TooltipDelay.zero}
-          data-block="hai"
+          data-callout="laffey"
         >
           <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
             {t('배달 음식')}

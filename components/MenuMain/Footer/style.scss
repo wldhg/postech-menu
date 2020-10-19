@@ -107,3 +107,10 @@ footer {
   height: 0;
   visibility: hidden;
 }
+
+[data-callout="laffey"] {
+  &, & > * {
+    background-color: #66c;
+    color: white;
+  }
+}
