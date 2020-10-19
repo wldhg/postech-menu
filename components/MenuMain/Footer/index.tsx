@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ActionButton, Text, TooltipDelay, TooltipHost,
+  ActionButton, Text,
 } from '@fluentui/react';
 import HiddenText from 'components/Controls/HiddenText';
 import useI18n from 'hooks/i18n';
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
 
   /* Delivery Menu */
   const movePolivery = () => {
-    window.open('http://polivery.ml/?search', '_blank').focus();
+    window.open('http://delivery.postech.ac.kr/?search', '_blank').focus();
   };
 
   /* Error Report */
@@ -40,18 +40,9 @@ const Footer: React.FC = () => {
         <DispLocale />
         <CaptureMenu />
         <CopyText />
-        <TooltipHost
-          content={t('Polivery 이용이 불안정할 수 있습니다. (Polivery 측 문제입니다.)')}
-          calloutProps={{
-            gapSpace: 0,
-          }}
-          delay={TooltipDelay.zero}
-          data-callout="laffey"
-        >
-          <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
-            {t('배달 음식')}
-          </ActionButton>
-        </TooltipHost>
+        <ActionButton onClick={movePolivery} title={t('포스텍 배달음식 바로가기')}>
+          {t('배달 음식')}
+        </ActionButton>
       </div>
       <div className={$.footerLine}>
         <BrightnessMode />
