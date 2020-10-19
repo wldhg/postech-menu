@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
   /* Render */
   return (
     <footer>
-      <div>
+      <div className={$.footerLine}>
         <DispLocale />
         <CaptureMenu />
         <CopyText />
@@ -51,14 +51,14 @@ const Footer: React.FC = () => {
             },
           }}
           delay={TooltipDelay.zero}
-          className={$.forceInlineBlock}
+          data-block="hai"
         >
           <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
             {t('배달 음식')}
           </ActionButton>
         </TooltipHost>
       </div>
-      <div>
+      <div className={$.footerLine}>
         <BrightnessMode />
         <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
         <ActionButton onClick={moveStatus}>{t('API 상태')}</ActionButton>

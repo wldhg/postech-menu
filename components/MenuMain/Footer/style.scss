@@ -62,7 +62,7 @@ footer {
     user-select: initial;
   }
 
-  .forceInlineBlock {
+  .footerLine > * {
     display: inline-block !important;
   }
 }
