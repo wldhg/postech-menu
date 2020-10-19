@@ -61,6 +61,10 @@ footer {
   .selectable {
     user-select: initial;
   }
+
+  .forceInlineBlock {
+    display: inline-block !important;
+  }
 }
 
 .clDetail {

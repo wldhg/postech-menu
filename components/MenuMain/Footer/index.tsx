@@ -51,6 +51,7 @@ const Footer: React.FC = () => {
             },
           }}
           delay={TooltipDelay.zero}
+          className={$.forceInlineBlock}
         >
           <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
             {t('배달 음식')}
