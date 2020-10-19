@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ActionButton, Text,
+  ActionButton, Text, TooltipDelay, TooltipHost,
 } from '@fluentui/react';
 import HiddenText from 'components/Controls/HiddenText';
 import useI18n from 'hooks/i18n';
@@ -40,9 +40,22 @@ const Footer: React.FC = () => {
         <DispLocale />
         <CaptureMenu />
         <CopyText />
-        <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
-          {t('배달 음식')}
-        </ActionButton>
+        <TooltipHost
+          content={t('Polivery 이용이 불안정할 수 있습니다. (Polivery 측 문제입니다.)')}
+          calloutProps={{
+            gapSpace: 1,
+          }}
+          styles={{
+            root: {
+              display: 'inline-block',
+            },
+          }}
+          delay={TooltipDelay.zero}
+        >
+          <ActionButton onClick={movePolivery} title={t('Polivery 바로가기')}>
+            {t('배달 음식')}
+          </ActionButton>
+        </TooltipHost>
       </div>
       <div>
         <BrightnessMode />
