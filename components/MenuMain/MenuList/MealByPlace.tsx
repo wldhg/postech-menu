@@ -15,6 +15,8 @@ interface Props {
   engTranslationRequired?: boolean
 };
 
+const filtText = Object.keys(F);
+
 const MealByPlace: React.FC<Props> = (props: Props) => {
   const { getMenu, isMenuLoaded } = useAPI();
   const { t, getLocale } = useI18n(D);
@@ -30,8 +32,10 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
           if (menuText.indexOf('__') === 0) {
             menuText = menuText.substring(2);
             isSearchable = false;
-          } else if (Object.prototype.hasOwnProperty.call(F, searchText)) {
-            searchText = F[searchText];
+          } else {
+            for (let i = 0; i < filtText.length; i += 1) {
+              searchText = searchText.replace(filtText[i], F[filtText[i]]);
+            }
           }
           return (
             <p key={`${place}-${type}-i${Math.random()}`}>

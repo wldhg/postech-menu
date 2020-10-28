@@ -136,7 +136,8 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                           let menuName = splitedItem[0];
                           if (locale === 'ko') {
                             for (let i = 1; i < splitedItem.length; i += 1) {
-                              if (splitedItem[i].match(/[a-zA-Z]/g) === null) {
+                              const spim = splitedItem[i].match(/[a-zA-Z]/g);
+                              if (spim === null || spim.length < 2) {
                                 menuName += ` ${splitedItem[i]}`;
                               } else {
                                 break;
@@ -144,7 +145,8 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                             }
                           } else {
                             for (let i = 1; i < splitedItem.length; i += 1) {
-                              if (splitedItem[i].match(/[a-zA-Z]/g) !== null) {
+                              const spim = splitedItem[i].match(/[a-zA-Z]/g);
+                              if (spim !== null && spim.length > 1) {
                                 menuName = splitedItem.slice(i).join(' ');
                                 break;
                               }
@@ -159,7 +161,11 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
                         parsed = [text.substring(text.indexOf(' '))];
                       }
                     }
-                    return parsed;
+                    const parsedRe = [];
+                    for (const item of parsed) {
+                      parsedRe.push(...item.split('/'));
+                    }
+                    return parsedRe;
                   };
                   const getParsed = (type, btd) => {
                     /* eslint-disable no-else-return */

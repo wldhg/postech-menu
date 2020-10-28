@@ -46,3 +46,7 @@
   - icon: Link
     type: Feature Enhancement
     content: Updated Polivery link.
+'20201028.0':
+  - icon: Search
+    type: Feature Enhancement
+    content: Image search query gets more detail.
