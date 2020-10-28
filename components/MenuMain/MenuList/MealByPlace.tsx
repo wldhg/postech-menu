@@ -49,7 +49,7 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
                         '_blank',
                       ).focus();
                     }}
-                    title={`${t('눌러서 구글에서 ')}${menuText}${t(' 검색하기')}`}
+                    title={`${t('눌러서 구글에서 ')}${searchText}${t(' 검색하기')}`}
                     className={$.buttonlikeMenuItem}
                   >
                     {menuText}
