@@ -20,3 +20,12 @@ h1 {
 .engNoti {
   margin-bottom: 5px;
 }
+
+.notiBar {
+  border-radius: 2px;
+  margin-bottom: 15px;
+
+  i[data-icon-name] {
+    color: black !important;
+  }
+}
