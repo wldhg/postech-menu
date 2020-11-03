@@ -169,6 +169,11 @@ if (process.env.NEXT_PUBLIC_DISABLE_SELF_API !== 'true') {
   APIServers.push('/api');
 }
 
+const APIPoints = [
+  'v1/getStaticJigokMenu',
+  'v1/getRISTMenu',
+];
+
 const parallelizeMenu = (menu: string[], locale: I18nLocale): MealMenu => {
   let cache: MealMenu = [];
   if (menu.length > 0) {
@@ -217,7 +222,7 @@ const getJigokMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   for (let i = 0; i < APIServers.length; i += 1) {
     jigokRequest.push(
       new Promise((ok) => {
-        fetch(`${APIServers[i]}/v1/getJigokMenu?locale=${locale}`, {
+        fetch(`${APIServers[i]}/${APIPoints[0]}?locale=${locale}`, {
           method: 'GET',
         }).then((res) => {
           if (res.status !== 200) {
@@ -274,7 +279,7 @@ const getRISTMenu = (locale: I18nLocale, dispatch: APIDispatch) => {
   for (let i = 0; i < APIServers.length; i += 1) {
     ristRequest.push(
       new Promise((ok) => {
-        fetch(`${APIServers[i]}/v1/getRISTMenu?locale=${locale}`, {
+        fetch(`${APIServers[i]}/${APIPoints[1]}?locale=${locale}`, {
           method: 'GET',
         }).then((res) => {
           if (res.status !== 200) {

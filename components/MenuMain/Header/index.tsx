@@ -8,7 +8,7 @@ import D from './en.d.yml';
 
 const Header: React.FC = () => {
   const { t } = useI18n(D);
-  const [showNoti, setShowNoti] = useState(true);
+  const [showNoti, setShowNoti] = useState(false);
 
   const closeNoti = () => {
     setShowNoti(false);

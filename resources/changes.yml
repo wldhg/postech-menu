@@ -50,3 +50,10 @@
   - icon: Search
     type: Feature Enhancement
     content: Image search query gets more detail.
+'20201103.0':
+  - icon: AzureAPIManagement
+    type: Invisible Changes
+    content: API backup is now working.
+    details:
+      - Due to the maintanence of POSTECH FD site, I implemented some non-automatic system in backend.
+      - Now, POME can serve back-up service easily when the POSTECH remote server does not work.
