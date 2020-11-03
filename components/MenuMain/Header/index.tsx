@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             dismissButtonAriaLabel={t('닫기')}
             onDismiss={closeNoti}
           >
-            {t('현재 복지회 서버가 불안정하여 메뉴가 올바르게 표시되지 않습니다.')}
+            {t('현재 복지회 사이트 개편 중으로, 학생 식당 메뉴는 POVIS를 이용해주세요.')}
           </MessageBar>
         )
       }
