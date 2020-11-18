@@ -2,4 +2,4 @@ en:
   '오늘의 교내 식단': 'Today''s Campus Menu'
   'YYYY년 M월 D일': 'MMM Do YYYY'
   '닫기': 'Close'
-  '현재 복지회 사이트 개편 중으로, 학생 식당 메뉴는 POVIS를 이용해주세요.': 'POSTECH FD site is now under construction. Please use POVIS for Student Cafeteria menu.'
+  '현재 RIST 식단 서버 불안정으로 식단 표시가 올바르게 되지 않고 있습니다.': 'RIST menu is not displayed due to unstable connection to RIST API server.'

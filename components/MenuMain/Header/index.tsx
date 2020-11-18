@@ -8,7 +8,7 @@ import D from './en.d.yml';
 
 const Header: React.FC = () => {
   const { t } = useI18n(D);
-  const [showNoti, setShowNoti] = useState(false);
+  const [showNoti, setShowNoti] = useState(true);
 
   const closeNoti = () => {
     setShowNoti(false);
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             dismissButtonAriaLabel={t('닫기')}
             onDismiss={closeNoti}
           >
-            {t('현재 복지회 사이트 개편 중으로, 학생 식당 메뉴는 POVIS를 이용해주세요.')}
+            {t('현재 RIST 식단 서버 불안정으로 식단 표시가 올바르게 되지 않고 있습니다.')}
           </MessageBar>
         )
       }
