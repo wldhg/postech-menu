@@ -11,7 +11,7 @@
 
   h1 {
     font-size: 6rem;
-    color: $accent;
+    color: var(--ac-color);
     margin: 0;
 
     &.apiDisabled i {
@@ -19,7 +19,7 @@
     }
 
     i {
-      color: $accent !important;
+      color: var(--ac-color) !important;
     }
   }
 

@@ -12,7 +12,7 @@ h1 {
   }
 
   .date {
-    color: $accent;
+    color: var(--ac-color);
     font-weight: 400;
   }
 }

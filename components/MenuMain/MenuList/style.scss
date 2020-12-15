@@ -59,7 +59,7 @@
 
           .subTitle {
             font-weight: 700;
-            color: $accent;
+            color: var(--ac-color);
           }
 
           .translate {
@@ -82,7 +82,7 @@
               width: 1.6em;
 
               path {
-                fill: $accent;
+                fill: var(--ac-color);
                 transition: fill .3s ease-in-out;
               }
             }
@@ -100,7 +100,7 @@
             cursor: pointer;
 
             &:hover, &:focus {
-              color: $accent;
+              color: var(--ac-color);
             }
           }
         }
