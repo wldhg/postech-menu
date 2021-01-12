@@ -170,7 +170,7 @@ if (process.env.NEXT_PUBLIC_DISABLE_SELF_API !== 'true') {
 }
 
 const APIPoints = [
-  'v1/getStaticJigokMenu',
+  'v1/getJigokMenu',
   'v1/getRISTMenu',
 ];
 

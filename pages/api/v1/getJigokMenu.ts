@@ -1,18 +1,17 @@
 import request from 'request';
-import cheerio from 'cheerio';
 import moment from 'moment';
 import http from 'http';
 
 const jigokFailed = {
   ko: {
-    breakfast: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
-    lunch: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
-    dinner: ['__복지회 식단 데이터에 접근할 수 없습니다.'],
+    breakfast: ['__식단 데이터에 접근할 수 없습니다.'],
+    lunch: ['__식단 데이터에 접근할 수 없습니다.'],
+    dinner: ['__식단 데이터에 접근할 수 없습니다.'],
   },
   en: {
-    breakfast: ['__Failed to access POSTECH food service.'],
-    lunch: ['__Failed to access POSTECH food service.'],
-    dinner: ['__Failed to access POSTECH food service.'],
+    breakfast: ['__Failed to access Laffey static service.'],
+    lunch: ['__Failed to access Laffey static service.'],
+    dinner: ['__Failed to access Laffey static service.'],
   },
 };
 
@@ -34,20 +33,7 @@ const jigokTimeout = () => {
   };
 };
 
-const jigokNoMenu = {
-  ko: {
-    breakfast: ['__식사가 없는 날입니다.'],
-    lunch: ['__식사가 없는 날입니다.'],
-    dinner: ['__식사가 없는 날입니다.'],
-  },
-  en: {
-    breakfast: ['__There\'re no meals today.'],
-    lunch: ['__There\'re no meals today.'],
-    dinner: ['__There\'re no meals today.'],
-  },
-};
-
-const jigokMenu = {
+let jigokMenu = {
   en: {
     breakfast: [],
     lunch: [],
@@ -70,7 +56,7 @@ const jigokRet = {
   ko: '',
 };
 
-const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
+const getStaticJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   if (process.env.NEXT_PUBLIC_DISABLE_SELF_API === 'true') {
     O.setHeader('Content-Type', 'application/json; charset=utf-8');
     O.end(JSON.stringify({ listen: 'API endpoint functionality is disabled for this instance.' }));
@@ -102,11 +88,22 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
       }, 300);
     } else {
       jigokParsing = true;
-      jigokMenu[locale].breakfast = [];
-      jigokMenu[locale].lunch = [];
-      jigokMenu[locale].dinner = [];
+      const targetDate = moment().format('YYYYMMDD');
+      const targetURL = `https://food.podac.poapper.com/v1/menus/period/${targetDate}/${targetDate}`;
+      jigokMenu = {
+        en: {
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+        },
+        ko: {
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+        },
+      };
       request.get({
-        url: 'http://fd.postech.ac.kr/bbs/today_menu.php?bo_table=weekly',
+        url: targetURL,
       }, (error, response, raw) => {
         if (!error && response && response.statusCode === 200) {
           const timeout = setTimeout(() => {
@@ -114,103 +111,55 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
             O.end(JSON.stringify(jigokTimeout()[locale]));
           }, 1400);
           try {
-            const body = cheerio.load(raw);
-            body('.list_td tr').each((ri, tr) => {
-              if (ri === 3) {
-                if (body(tr).text().indexOf('등록된 메뉴가 없습니다') > -1) {
-                  clearTimeout(timeout);
-                  jigokMenu[locale] = jigokNoMenu[locale];
-                  jigokRet[locale] = JSON.stringify(jigokMenu[locale]);
-                  jigokDate[locale] = moment().format('YYYYMMDD');
-                  jigokParsing = false;
-                  O.end(jigokRet[locale]);
-                } else {
-                  // Define parsing function
-                  const parse = (td) => {
-                    const text: string = td.text();
-                    let parsed = [text];
-                    if (text.indexOf('"') === 0) {
-                      parsed = text.substring(1, text.length - 1).split('"\n"')
-                        .map((item) => {
-                          const splitedItem = item.split('\n');
-                          let menuName = splitedItem[0];
-                          if (locale === 'ko') {
-                            for (let i = 1; i < splitedItem.length; i += 1) {
-                              const spim = splitedItem[i].match(/[a-zA-Z]/g);
-                              if (spim === null || spim.length < 2) {
-                                menuName += ` ${splitedItem[i]}`;
-                              } else {
-                                break;
-                              }
-                            }
-                          } else {
-                            for (let i = 1; i < splitedItem.length; i += 1) {
-                              const spim = splitedItem[i].match(/[a-zA-Z]/g);
-                              if (spim !== null && spim.length > 1) {
-                                menuName = splitedItem.slice(i).join(' ');
-                                break;
-                              }
-                            }
-                          }
-                          return menuName;
-                        });
-                    } else if (text.indexOf('\n') === -1) {
-                      if (locale === 'ko') {
-                        parsed = [text.substring(0, text.indexOf(' '))];
-                      } else {
-                        parsed = [text.substring(text.indexOf(' '))];
-                      }
-                    }
-                    const parsedRe = [];
-                    for (const item of parsed) {
-                      parsedRe.push(...item.split('/'));
-                    }
-                    return parsedRe;
-                  };
-                  const getParsed = (type, btd) => {
-                    /* eslint-disable no-else-return */
-                    const td = btd[0];
-                    if (td.attribs && td.attribs.colspan && td.attribs.colspan === '2') {
-                      // One Menu
-                      jigokMenu[locale][type] = parse(btd);
-                      return true;
-                    } else if (Object.keys(jigokMenu[locale][type]).length === 0) {
-                      // Two Menu A
-                      jigokMenu[locale][type].push(locale === 'ko' ? '== A 코너' : '== A Course');
-                      jigokMenu[locale][type].push(...parse(btd));
-                      return false;
-                    } else {
-                      // Two Menu B
-                      jigokMenu[locale][type].push(locale === 'ko' ? '== B 코너' : '== B Course');
-                      jigokMenu[locale][type].push(...parse(btd));
-                      return true;
-                    }
-                  };
-                  // Parse
-                  let breakfastCompleted = false;
-                  let lunchCompleted = false;
-                  let dinnerCompleted = false;
-                  const tds = body(tr).find('td');
-                  for (let di = 0; di < tds.length; di += 1) {
-                    const btd = body(tds[di]);
-                    if (!breakfastCompleted) {
-                      breakfastCompleted = getParsed('breakfast', btd);
-                    } else if (!lunchCompleted) {
-                      lunchCompleted = getParsed('lunch', btd);
-                    } else {
-                      dinnerCompleted = getParsed('dinner', btd);
-                    }
-                    if (dinnerCompleted) {
-                      clearTimeout(timeout);
-                      jigokRet[locale] = JSON.stringify(jigokMenu[locale]);
-                      jigokDate[locale] = moment().format('YYYYMMDD');
-                      jigokParsing = false;
-                      O.end(jigokRet[locale]);
-                    }
+            const data = JSON.parse(raw.toString());
+            const bak = [];
+            const bae = [];
+            const bbk = [];
+            const bbe = [];
+            for (const list of data) {
+              switch (list.type) {
+                case 'BREAKFAST_A':
+                  for (const item of list.foods) {
+                    bak.push(item.name_kor);
+                    bae.push(item.name_eng);
                   }
-                }
+                  break;
+                case 'BREAKFAST_B':
+                  for (const item of list.foods) {
+                    bbk.push(item.name_kor);
+                    bbe.push(item.name_eng);
+                  }
+                  break;
+                case 'LUNCH':
+                  for (const item of list.foods) {
+                    jigokMenu.ko.lunch.push(item.name_kor);
+                    jigokMenu.en.lunch.push(item.name_eng);
+                  }
+                  break;
+                case 'DINNER':
+                  for (const item of list.foods) {
+                    jigokMenu.ko.dinner.push(item.name_kor);
+                    jigokMenu.en.dinner.push(item.name_eng);
+                  }
+                  break;
+                default:
+                  break;
               }
-            });
+            }
+            if (bbk.length > 0) {
+              jigokMenu.ko.breakfast = ['== 정식', ...bak, '== 빵', ...bbk];
+              jigokMenu.en.breakfast = ['== Regular Meal', ...bae, '== Western Meal', ...bbe];
+            } else {
+              jigokMenu.ko.breakfast = bak;
+              jigokMenu.en.breakfast = bae;
+            }
+            clearTimeout(timeout);
+            jigokRet.en = JSON.stringify(jigokMenu.en);
+            jigokRet.ko = JSON.stringify(jigokMenu.ko);
+            jigokDate.en = targetDate;
+            jigokDate.ko = targetDate;
+            jigokParsing = false;
+            O.end(jigokRet[locale]);
           } catch (e) {
             clearTimeout(timeout);
             jigokParsing = false;
@@ -225,4 +174,4 @@ const getJigokMenu = (I: http.IncomingMessage, O: http.OutgoingMessage) => {
   }
 };
 
-export default getJigokMenu;
+export default getStaticJigokMenu;
