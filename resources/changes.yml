@@ -68,3 +68,7 @@
   - icon: Link
     type: Link Update
     content: Footer links are updated.
+'20210812.1':
+  - icon: Search
+    type: Feature Enhancement
+    content: Words after parentheses and slants will be automatically dropped in image search query.

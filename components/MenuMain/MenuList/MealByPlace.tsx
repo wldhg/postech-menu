@@ -33,6 +33,12 @@ const MealByPlace: React.FC<Props> = (props: Props) => {
             menuText = menuText.substring(2);
             isSearchable = false;
           } else {
+            if (searchText.indexOf('/') > -1) {
+              [searchText] = searchText.split('/');
+            }
+            if (searchText.indexOf('(') > -1) {
+              [searchText] = searchText.split('(');
+            }
             for (let i = 0; i < filtText.length; i += 1) {
               searchText = searchText.replace(filtText[i], F[filtText[i]]);
             }
