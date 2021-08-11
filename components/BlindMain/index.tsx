@@ -67,7 +67,7 @@ const BlindMain: React.FC<Props> = (props: Props) => {
           </p>
         )
       }
-      <p>&copy; Avowal.</p>
+      <p>&copy; Laffey.</p>
     </Wrapper>
   );
 };

@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
 
   /* Status */
   const moveStatus = () => {
-    window.open('https://status.menu.laffey.kr/', '_blank').focus();
+    window.open('https://stats.uptimerobot.com/lD7gksoLEw', '_blank').focus();
   };
 
   /* Render */
