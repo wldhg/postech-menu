@@ -13,9 +13,9 @@ const DispLocale: React.FC = () => {
   // Storage manager
   const setEnglishFlag = (data?: boolean) => {
     if (typeof data !== 'boolean') {
-      window.localStorage.removeItem('EnglishGirl');
+      window.localStorage.removeItem('EnglishConfig');
     } else {
-      window.localStorage.setItem('EnglishGirl', data.toString());
+      window.localStorage.setItem('EnglishConfig', data.toString());
     }
   };
   // Button click action for toggle

@@ -20,7 +20,12 @@ const Footer: React.FC = () => {
 
   /* Delivery Menu */
   const movePolivery = () => {
-    window.open('http://delivery.postech.ac.kr/?search', '_blank').focus();
+    window.open('https://delivery.postech.ac.kr/?search', '_blank').focus();
+  };
+
+  /* Weekly Food */
+  const moveWeeklyFood = () => {
+    window.open('https://dining.postech.ac.kr/weekly-menu/', '_blank').focus();
   };
 
   /* Error Report */
@@ -40,23 +45,24 @@ const Footer: React.FC = () => {
         <DispLocale />
         <CaptureMenu />
         <CopyText />
-        <ActionButton onClick={movePolivery} title={t('포스텍 배달음식 바로가기')}>
-          {t('배달 음식')}
-        </ActionButton>
+        <BrightnessMode />
       </div>
       <div className={$.footerLine}>
-        <BrightnessMode />
-        <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
+        <ActionButton onClick={movePolivery} title={t('포스텍 배달음식 바로가기')}>
+          {t('포스텍 배달 음식')}
+        </ActionButton>
+        <ActionButton onClick={moveWeeklyFood} title={t('복지회 주간 식단 바로가기')}>
+          {t('복지회 주간 식단')}
+        </ActionButton>
+      </div>
+      <div className={[$.footerLine, $.footerDimmed].join(' ')}>
         <ActionButton onClick={moveStatus}>{t('API 상태')}</ActionButton>
-        {
-          getLocale() === 'en' && (
-            <ThirdPartyLicense />
-          )
-        }
+        <ActionButton onClick={moveErrorReport}>{t('오류 신고')}</ActionButton>
+        <ThirdPartyLicense />
       </div>
       <HiddenText lowerPad={2}>---</HiddenText>
       <p className={$.notSelectable}>
-        <Text variant="smallPlus" className={$.selectable}>{t('데이터: 포스텍 복지회, 신세계푸드.')}</Text>
+        <Text variant="smallPlus" className={$.selectable}>{t('데이터: 포스텍 복지회 (포애퍼), 신세계푸드.')}</Text>
         <br />
         <Text variant="smallPlus">
           {t('시스템: ')}
@@ -65,7 +71,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t('실토')}
+            Laffey
           </a>
           .
         </Text>

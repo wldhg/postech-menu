@@ -11,11 +11,11 @@ const BrightnessMode: React.FC = () => {
 
   /* Brightness Mode */
   // Storage manager
-  const setNightBoy = (data?: boolean) => {
+  const setNightConfig = (data?: boolean) => {
     if (typeof data !== 'boolean') {
-      window.localStorage.removeItem('NightBoy');
+      window.localStorage.removeItem('NightConfig');
     } else {
-      window.localStorage.setItem('NightBoy', data.toString());
+      window.localStorage.setItem('NightConfig', data.toString());
     }
   };
   // Button click action for toggle
@@ -23,16 +23,16 @@ const BrightnessMode: React.FC = () => {
     if (document.documentElement.dataset?.theme === 'dark') {
       setTheme('light');
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setNightBoy(false);
+        setNightConfig(false);
       } else {
-        setNightBoy();
+        setNightConfig();
       }
     } else {
       setTheme('dark');
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setNightBoy();
+        setNightConfig();
       } else {
-        setNightBoy(true);
+        setNightConfig(true);
       }
     }
   };

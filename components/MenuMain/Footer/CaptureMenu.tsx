@@ -31,7 +31,7 @@ const CaptureMenu: React.FC = () => {
       import('html2canvas').then((h2c) => {
         const doSecondaryTry = () => {
           h2c.default(document.querySelector('main'), {
-            backgroundColor: getTheme() === 'light' ? '#ffffff' : '#1a1918',
+            backgroundColor: getTheme() === 'light' ? '#ffffff' : '#1b1a19',
             canvas: null,
             cache: null,
             allowTaint: true,

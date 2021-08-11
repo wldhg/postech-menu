@@ -7,6 +7,8 @@ POSTECH Cafeteria Menu Viewer. Now in service: [menu.laffey.kr](https://menu.laf
 Planned Features
 ----------------
 
+Below features are developed very slowly due to my heavy other tasks.
+
 - [x] English support in RIST Cafeteria
 - [ ] Support PAL menu
 - [ ] Support POSCO Group University menu
@@ -25,4 +27,4 @@ Planned Features
 
 Other licenses from 3rd-party such as development tools are written in each links of [yarn.lock](./yarn.lock) file.
 
-&copy; Avowal.
+&copy; Jio Laffey Gim.

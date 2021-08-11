@@ -61,3 +61,10 @@
   - icon: AzureAPIManagement
     type: Invisible Changes
     content: Now PoApper Jigok Menu API is deployed.
+'20210812.0':
+  - icon: AzureAPIManagement
+    type: Invisible Changes
+    content: Updated API server list.
+  - icon: Link
+    type: Link Update
+    content: Footer links are updated.

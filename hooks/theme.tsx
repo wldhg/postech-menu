@@ -63,7 +63,7 @@ const monetDark = createTheme({
     neutralPrimary: '#ffffff',
     neutralDark: '#f4f4f4',
     black: '#f8f8f8',
-    white: '#1a1918',
+    white: '#1b1a19',
   },
 });
 

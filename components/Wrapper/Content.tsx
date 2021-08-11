@@ -36,9 +36,9 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
   // Display Mode
   const dispModeInit = `
     if (
-      ((window.localStorage.getItem('NightBoy') === 'true') ${/* Manually Set To Dark */''}
+      ((window.localStorage.getItem('NightConfig') === 'true') ${/* Manually Set To Dark */''}
       || (window.matchMedia('(prefers-color-scheme: dark)').matches)) ${/* Dark By Default */''}
-      && !(window.localStorage.getItem('NightBoy') === 'false') ${/* Manually Set To Not Dark */''}
+      && !(window.localStorage.getItem('NightConfig') === 'false') ${/* Manually Set To Not Dark */''}
     ) {
       document.documentElement.dataset.theme = 'dark';
     } else {
@@ -57,9 +57,9 @@ const WrapperContent: React.FC<Props> = (props: Props) => {
   // Locale
   const localeInit = `
     if (
-      ((window.localStorage.getItem('EnglishGirl') === 'true') ${/* Manually Set To English */''}
+      ((window.localStorage.getItem('EnglishConfig') === 'true') ${/* Manually Set To English */''}
       || (navigator.language.indexOf('ko') === -1)) ${/* English By Default */''}
-      && !(window.localStorage.getItem('EnglishGirl') === 'false') ${/* Manually Set To Not English */''}
+      && !(window.localStorage.getItem('EnglishConfig') === 'false') ${/* Manually Set To Not English */''}
     ) {
       document.documentElement.lang = 'en';
     } else {

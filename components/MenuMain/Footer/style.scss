@@ -65,6 +65,10 @@ footer {
   .footerLine > * {
     display: inline-block !important;
   }
+
+  .footerDimmed span:not(:hover) {
+    color: gray;
+  }
 }
 
 .clDetail {
@@ -113,4 +117,10 @@ footer {
     background-color: #66c;
     color: white;
   }
+}
+
+.thirdthanks {
+  padding: 10px 20px;
+  border-radius: 2px;
+  background: rgba(128, 128, 128, .15);
 }
