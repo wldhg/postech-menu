@@ -1,6 +1,6 @@
 <img src="./resources/header.svg" />
 
-===
+---
 
 POSTECH Cafeteria Menu Viewer. Now in service: [menu.monet.re.kr](https://menu.monet.re.kr/).
 
