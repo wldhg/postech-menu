@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
 
   /* Error Report */
   const moveErrorReport = () => {
-    window.location.href = 'mailto:dev@laffey.kr';
+    window.location.href = 'mailto:dev@laf.gg';
   };
 
   /* Status */

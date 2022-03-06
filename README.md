@@ -1,13 +1,27 @@
 <img src="./resources/header.svg" />
 
----
+===
 
-POSTECH Cafeteria Menu Viewer. Now in service: [menu.laffey.kr](https://menu.laffey.kr/).
+POSTECH Cafeteria Menu Viewer. Now in service: [menu.monet.re.kr](https://menu.monet.re.kr/).
+
+Implemented Features
+--------------------
+
+- Screen capture
+- (Passive) translation
+- Text copy
+- Student cafeteria menu (api by PoApper (dining.postech.ac.kr))
+- RIST cafeteria menu (api by Shinsegae food service (ssgfoodingplus.com))
+- Dark/light mode
 
 Planned Features
 ----------------
 
-Below features are developed very slowly due to my heavy other tasks.
+There was a development plan below, but the it became actually impossible to proceed due to busy personal work.
+
+If you are interested in the development of this repository, please feel free to contact jio.gim@postech.edu or dev@laf.gg.
+
+As long as I'm in POSTECH, the service of this (including domain and maintaining api server) will continue.
 
 - [x] English support in RIST Cafeteria
 - [ ] Support PAL menu
