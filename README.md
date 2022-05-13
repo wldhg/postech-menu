@@ -2,7 +2,7 @@
 
 ---
 
-POSTECH Cafeteria Menu Viewer. Now in service: [menu.monet.re.kr](https://menu.monet.re.kr/).
+POSTECH Cafeteria Menu Viewer. Now in service: [menu.aiot.town](https://menu.aiot.town/).
 
 Implemented Features
 --------------------

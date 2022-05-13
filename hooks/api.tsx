@@ -162,7 +162,7 @@ const APIFailedObject: {[key in I18nLocale]: {[key in MealType]: string[]}} = {
 
 const APIServers = [
   'https://postech-menu-api.laf.gg/api',
-  'https://nabi-menu.monet.re.kr/api',
+  'https://nabi-menu.aiot.town/api',
 ];
 
 if (process.env.NEXT_PUBLIC_DISABLE_SELF_API !== 'true') {
