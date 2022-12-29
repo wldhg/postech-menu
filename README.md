@@ -2,7 +2,7 @@
 
 ---
 
-POSTECH Cafeteria Menu Viewer. Now in service: [menu.aiot.town](https://menu.aiot.town/).
+POSTECH Cafeteria Menu Viewer. Service closed.
 
 Implemented Features
 --------------------
